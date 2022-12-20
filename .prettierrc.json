@@ -13,16 +13,15 @@
     "tabWidth": 4,
     "trailingComma": "none",
     "useTabs": false,
-    "vueIndentScriptAndStyle": true,
     "rangeStart": 0,
-    "requirePragma": false,
-    "insertPragma": false,
     "overrides": [
         {
             "files": ["*.test.js", "*.test.jsx", "*.test.ts", "*.test.tsx"],
             "options": {
                 "semi": true,
-                "trailingComma": "none"
+                "trailingComma": "none",
+                "singleQuote": true,
+                "tabWidth": 4
             }
         },
         {
@@ -30,8 +29,8 @@
             "options": {
                 "tabWidth": 4,
                 "useTabs": false,
-                "semi": true,
-                "singleQuote": false
+                "semi": false,
+                "endOfLine": "auto"
             }
         },
         {

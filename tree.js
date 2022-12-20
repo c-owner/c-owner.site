@@ -3,7 +3,7 @@
  *
  * Created - 2022.12.
  */
-const colors = require('colors')
+const colors = require("colors")
 
 // 우리 트리를 담당해줄 트리 꾸미기 세트
 const X_Mas = {}
@@ -12,8 +12,8 @@ const X_Mas = {}
 X_Mas.padding = 8
 
 // 트리에 장식할 데코와 색상들!
-X_Mas._colors = ['RED', 'YELLOW', 'BLUE', 'MAGENTA', 'CYAN', 'WHITE']
-X_Mas._decorations = ['o', '*']
+X_Mas._colors = ["RED", "YELLOW", "BLUE", "MAGENTA", "CYAN", "WHITE"]
+X_Mas._decorations = ["o", "*"]
 
 /**
  * @description 음.. 여기에 장식을 추가할까?
@@ -30,13 +30,13 @@ X_Mas._thinkAboutAddDerocation = function (percent = 3) {
  * @return {string} 눈부신 별!
  */
 X_Mas._getStar = function (area) {
-    let star = ''
+    let star = ""
 
     for (let i = 0; i < area + 2 + this.padding; i++) {
-        star += ' '
+        star += " "
     }
 
-    return star + colors.yellow('★')
+    return star + colors.yellow("★")
 }
 
 /**
@@ -57,14 +57,14 @@ X_Mas._createDecoration = function () {
  * @return {string} 반짝반짝 트리의 일부분
  */
 X_Mas._createTree = function (width, area, floor) {
-    let tree = ''
+    let tree = ""
     let maxWidth = area + 1
 
     for (let i = 0; i < maxWidth - width + (2 - floor) + this.padding; i++) {
-        tree += ' '
+        tree += " "
     }
 
-    for (let i = 0; i < width * 2 + (floor * 2); i++) {
+    for (let i = 0; i < width * 2 + floor * 2; i++) {
         if (this._thinkAboutAddDerocation(4)) {
             tree += this._createDecoration()
         } else {
@@ -80,23 +80,23 @@ X_Mas._createTree = function (width, area, floor) {
  * @return {string} 아주 튼튼한 화분
  */
 X_Mas._treeOnThePot = function (area) {
-    let treeTrunk = ''
-    let flowerpot = ''
+    let treeTrunk = ""
+    let flowerpot = ""
 
     for (let i = 0; i < area + 2 + this.padding; i++) {
-        treeTrunk += ' '
+        treeTrunk += " "
     }
-    treeTrunk += colors.yellow('||') + '\n'
+    treeTrunk += colors.yellow("||") + "\n"
 
     for (let i = 0; i < area + 1 + this.padding; i++) {
-        flowerpot += ' '
+        flowerpot += " "
     }
-    flowerpot += colors.yellow('_||_') + '\n'
+    flowerpot += colors.yellow("_||_") + "\n"
 
     for (let i = 0; i < area + 1 + this.padding; i++) {
-        flowerpot += ' '
+        flowerpot += " "
     }
-    flowerpot += colors.yellow('\\__/') + '\n'
+    flowerpot += colors.yellow("\\__/") + "\n"
 
     return treeTrunk + flowerpot
 }
@@ -111,7 +111,7 @@ X_Mas.X_masTree = function (height = 15, div = 3) {
     const area = parseInt(height / div)
 
     // 영역을 기준으로 별 생성
-    console.log('\n\n' + this._getStar(area))
+    console.log("\n\n" + this._getStar(area))
     for (let areaIndex = div; areaIndex > 0; areaIndex--) {
         for (let i = 0; i <= area - areaIndex + 1; i++) {
             // 영역 별 트리 생성

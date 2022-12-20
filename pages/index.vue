@@ -5,10 +5,18 @@
     </div>
 </template>
 
-<script lang="ts"></script>
+<script lang="ts">
+const test: string = "test"
 
-<style lang="postcss" scoped>
-    .badge {
-        @apply bg-blue-500 text-white font-bold rounded-full px-3 py-1;
-    }
+function testFunction() {
+    console.log(test)
+}
+
+testFunction()
+</script>
+
+<style lang="postcss">
+.badge {
+    @apply bg-blue-500 text-white font-bold rounded-full px-3 py-1;
+}
 </style>
