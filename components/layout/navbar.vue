@@ -105,7 +105,7 @@
                       <img class="h-8 w-auto sm:h-10" src="~/public/img/github-logo.png" />
                     </a> -->
                     <span
-                        class="hidden md:block"
+                        class="hidden md:block ml-8 cursor-pointer"
                         @click="setColorTheme($colorMode.preference == 'dark' ? 'light' : 'dark')">
                         <svg
                             v-if="$colorMode.value == 'dark'"
