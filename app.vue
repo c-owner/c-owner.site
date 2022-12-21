@@ -18,7 +18,7 @@
     });
 </script>
 <template>
-    <NuxtLayout>
-        <NuxtPage />
-    </NuxtLayout>
+    <nuxt-layout>
+        <nuxt-page />
+    </nuxt-layout>
 </template>

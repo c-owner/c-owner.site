@@ -1,9 +1,11 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+    import Navbar from '@/components/layout/navbar.vue';
+</script>
 
 <template>
-    <div>
-        <LayoutNavbar />
+    <div class="dark:bg-black">
+        <Navbar />
 
-        <NuxtPage />
+        <slot class="mx-auto p-4" />
     </div>
 </template>
