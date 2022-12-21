@@ -6,8 +6,8 @@
 
 <script lang="ts">
 export default {
-    name: "default"
-}
+    name: "DefaultVue"
+};
 </script>
 
 <style scoped></style>

@@ -1,18 +1,11 @@
 <template>
-    <div>
-        <h1 class="hover:bg-black hover:text-white text-8xl">Index</h1>
-        <span class="badge text-sm">Test</span>
-    </div>
+    <div></div>
 </template>
 
 <script lang="ts">
-const test: string = "test"
-
-function testFunction() {
-    console.log(test)
-}
-
-testFunction()
+export default {
+    name: "IndexVue"
+};
 </script>
 
 <style lang="postcss">

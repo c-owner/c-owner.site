@@ -2,19 +2,13 @@
     "root": true,
     "env": {
         "browser": true,
-        "es6": true,
+        "es2021": true,
         "node": true
     },
-    "extends": [
-        "plugin:prettier/recommended",
-        "prettier"
-    ],
-    "plugins": [
-        "prettier"
-    ],
+    "ignorePatterns": ["node_modules/*", "dist/*", "!.prettierrc.js"],
+    "extends": ["plugin:nuxt/recommended", "plugin:vue/vue3-recommended", "plugin:prettier/recommended"],
+    "plugins": ["vue", "prettier"],
     "rules": {
-        "prettier/prettier": [
-            "error"
-        ]
+        "prettier/prettier": ["error", {}]
     }
 }

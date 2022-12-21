@@ -1,3 +1,5 @@
+import eslintPlugin from 'vite-plugin-eslint';
+
 export default defineNuxtConfig({
     // https://v3.nuxtjs.org/guide/directory-structure/nuxt.config/
 
@@ -13,7 +15,7 @@ export default defineNuxtConfig({
     ],
 
     modules: [
-        "@nuxtjs/tailwindcss"
+        "@nuxtjs/tailwindcss",
         // https://pinia.esm.dev
         // https://vueuse.org/
     ],
@@ -36,8 +38,13 @@ export default defineNuxtConfig({
     //   Currently still needed
     build: {
         // transpile: ['@heroicons/vue', '@headlessui/vue'],
-    }
+    },
 
+    vite: {
+        plugins: [
+            eslintPlugin()
+        ]
+    }
     /*vite: {
         optimizeDeps: {
             include: [
