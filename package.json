@@ -7,7 +7,11 @@
         "preview": "nuxt preview",
         "postinstall": "nuxt prepare",
         "prettier": "prettier --write \"**/*.{js,vue,ts,css,scss}\"",
-        "release": "yarn build && standard-version && git push --follow-tags && npm publish"
+        "release": "yarn build && standard-version && git push --follow-tags && npm publish",
+        "test": "yarn docker:up && yarn prisma migrate deploy && vitest",
+        "ci:test": "yarn prisma migrate deploy && vitest",
+        "prisma:generate": "dotenv -e .env -- npx prisma generate",
+        "prisma:migrate": "dotenv -e .env -- npx prisma migrate deploy --name prod"
     },
     "devDependencies": {
         "@headlessui/vue": "^1.7.7",
@@ -21,7 +25,6 @@
         "@tailwindcss/typography": "^0.5.8",
         "@typescript-eslint/eslint-plugin": "^5.47.0",
         "@typescript-eslint/parser": "^5.47.0",
-        "@vueuse/core": "^9.8.2",
         "@vueuse/nuxt": "^9.8.2",
         "eslint": "^8.30.0",
         "eslint-config-prettier": "^8.5.0",
@@ -29,6 +32,7 @@
         "eslint-plugin-vue": "^9.8.0",
         "node-sass": "^8.0.0",
         "nuxt": "3.0.0",
+        "nuxt-icon": "^0.1.8",
         "postcss": "^8.4.20",
         "prettier": "^2.8.1",
         "sass": "^1.57.1",
@@ -39,6 +43,15 @@
         "vitest": "^0.26.1"
     },
     "dependencies": {
-        "eslint-plugin-prettier": "^4.2.1"
+        "@prisma/client": "^4.8.0",
+        "@vueuse/core": "^9.8.2",
+        "bcrypt": "^5.1.0",
+        "dotenv-cli": "^6.0.0",
+        "eslint-plugin-prettier": "^4.2.1",
+        "prisma": "^4.8.0",
+        "uuid": "^9.0.0"
+    },
+    "prisma": {
+        "schema": "server/database/schema.prisma"
     }
 }

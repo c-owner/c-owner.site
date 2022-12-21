@@ -20,7 +20,8 @@ export default defineNuxtConfig({
         "@vueuse/nuxt",
         "@nuxtjs/tailwindcss",
         "@nuxtjs/color-mode",
-        "@nuxt/content"
+        "@nuxt/content",
+        "nuxt-icon"
         // https://pinia.esm.dev
     ],
     tailwindcss: {
