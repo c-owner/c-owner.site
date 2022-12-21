@@ -1,10 +1,9 @@
 <script setup lang="ts">
+
 </script>
 
 <template>
-    <div>
-        <LayoutNavbar />
+    <div class="">
 
-        <NuxtPage />
     </div>
 </template>
