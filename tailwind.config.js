@@ -1,6 +1,6 @@
 import colors from 'tailwindcss/colors'
 import defaultTheme from 'tailwindcss/defaultTheme'
-
+import tailwindForms from '@tailwindcss/forms'
 /** @type {import('tailwindcss').Config} */
 module.exports = {
     content: [
@@ -22,5 +22,5 @@ module.exports = {
             }
         }
     },
-    plugins: []
+    plugins: [tailwindForms]
 }

@@ -14,8 +14,7 @@
                         Corner
                         <span
                             class="bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-teal400 hover:from-green-500 hover:to-teal-400">
-                            Step by Step Test</span
-                        >
+                            Step by Step Test</span>
                     </p>
                 </div>
             </div>

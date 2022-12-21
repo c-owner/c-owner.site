@@ -3,7 +3,7 @@
 
     const nuxtApp = useNuxtApp();
 
-    nuxtApp.hook('page:finish', () => {
+    nuxtApp.hook('page:finish', () => { // 페이지 렌더링이 끝나면 하면 위로 스크롤
         window.scrollTo(0, 0);
     });
 
@@ -14,7 +14,13 @@
             { name: 'viewport', content: 'width=device-width, initial-scale=1' },
             { hid: 'description', name: 'description', content: '' }
         ],
-        link: [{ rel: 'icon', type: 'image/x-icon', href: '/img/logo_clear_fsj.png' }]
+        link: [{ rel: 'icon', type: 'image/x-icon', href: '/img/logo_clear_fsj.png' }],
+        script: [
+            {
+                src: 'https://unpkg.com/phosphor-icons',
+                type: 'text/javascript'
+            },
+        ]
     });
 </script>
 
