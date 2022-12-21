@@ -1,0 +1,370 @@
+.transition300 {
+    transition: all 0.3s ease;
+}
+.transition200 {
+    transition: all 0.2s ease;
+}
+.transition100 {
+    transition: all 0.1s ease;
+}
+.transition400 {
+    transition: all 0.4s ease;
+}
+
+/* Enter 단계에서는 transition을 추가하지 않음 */
+.fade-enter {
+    opacity: 0;
+}
+
+.fade-enter-active {
+    transition: opacity 1s; /*# 시간을 명시해줌*/
+    opacity: 1;     /* 1초 뒤에 opacity 0을 opacity 1로 바꿔줌 */
+}
+
+/* Slide transition using Animation property of CSS */
+.slide-enter{
+    /* keyframe에 이미 초기 상태를 정의해놔서 여기에 정의 안해도 됨 */
+}
+
+.slide-enter-active{
+    animation: slide-in 1s ease-out forwards;
+    /* forwards = element가 finishing position에 붙어놓음  */
+    transition: opacity .5s;
+}
+
+.slide-leave {
+
+}
+
+.slide-leave-active {
+    animation: slide-out 1s ease-out forwards;
+    transition: opacity .5s;
+    opacity: 0;
+}
+
+@keyframes slide-in {
+    from {
+        transform: translateY(20px);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes slide-out {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(20px);
+    }
+}
+
+
+.fade-leave {
+
+}
+
+.fade-leave-active {
+    transition: opacity 1s;
+    opacity: 0;
+}
+.show-enter-active,
+.show-leave-enter {
+    transform: translateX(0);
+    transition: all .3s linear;
+}
+.show-enter,
+.show-leave-to {
+    transform: translateX(100%);
+}
+
+
+.slide-in {
+    max-width: 600px;
+    padding: 2em 3em;
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    right: -100%;
+    background: #ddd;
+    height: 100%;
+    box-shadow: 1px 1px 10px rgba(0,0,0,.5);
+    transition: all .5s ease-in-out;
+}
+
+/* Set positioning back to 0 when toggled opened */
+.open {
+    right: 0;
+}
+
+/* add a close button in case toggle button is hidden on smaller screens */
+.close-btn {
+    border: none;
+    font-weight: bold;
+    font-size: 2em;
+    background: transparent;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: .5em;
+}
+
+
+.fade-leave-active {
+    transition: opacity 0.2s;
+}
+.fade-enter{
+    opacity: 0;
+}
+
+.slide-left {
+    transition: all 0.3s;
+}
+.slide-left-enter-active {
+    transition: all 0.3s ease;
+}
+.slide-left-leave-active {
+    transition: all 0.3s cubic-bezier(1, 0.5, 0.8, 1);
+}
+.slide-left-enter,
+.slide-left-leave-active {
+    transform: translateX(-100%);
+}
+
+
+.slide-up {
+    transition: all 0.2s;
+}
+
+.slide-up-enter-active {
+    transition: all 0.2s ease;
+}
+
+.slide-up-leave-active {
+    transition: all 0.2s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.slide-up-enter,
+.slide-up-leave-active {
+    transform: translateY(10%);
+    opacity: 0;
+}
+
+
+
+.slide-down {
+    transition: all 0.2s;
+}
+
+.slide-down-enter-active {
+    transition: all 0.2s ease;
+}
+
+.loader1:before{
+    content: "";
+    position: absolute;
+    z-index: 10;
+    top: 0px;
+    left: -25px;
+    height: 12px;
+    width: 12px;
+    border-radius: 12px;
+    -webkit-animation: loader1g 3s ease-in-out infinite;
+    animation: loader1g 3s ease-in-out infinite;
+}
+
+.loader1{
+    position: relative;
+    width: 12px;
+    height: 12px;
+    top: 46%;
+    left: 46%;
+    border-radius: 12px;
+    -webkit-animation: loader1m 3s ease-in-out infinite;
+    animation: loader1m 3s ease-in-out infinite;
+}
+
+
+.loader1:after{
+    content: "";
+    position: absolute;
+    z-index: 10;
+    top: 0px;
+    left: 25px;
+    height: 10px;
+    width: 10px;
+    border-radius: 10px;
+    -webkit-animation: loader1d 3s ease-in-out infinite;
+    animation: loader1d 3s ease-in-out infinite;
+}
+
+@-webkit-keyframes loader1g{
+    0%{background-color: rgba(255, 112, 112, 0.2);}
+    25%{background-color: rgb(255, 112, 112, 1);}
+    50%{background-color: rgba(255, 112, 112, .2);}
+    75%{background-color: rgba(255, 112, 112, .2);}
+    100%{background-color: rgba(255, 112, 112, .2);}
+}
+@keyframes loader1g{
+    0%{background-color: rgba(255, 112, 112, .2);}
+    25%{background-color: rgba(255, 112, 112, 1);}
+    50%{background-color: rgba(255, 112, 112, .2);}
+    75%{background-color: rgba(255, 112, 112, .2);}
+    100%{background-color: rgba(255, 112, 112, .2);}
+}
+
+@-webkit-keyframes loader1m{
+    0%{background-color: rgba(255, 112, 112, .2);}
+    25%{background-color: rgba(255, 112, 112, .2);}
+    50%{background-color: rgba(255, 112, 112, 1);}
+    75%{background-color: rgba(255, 112, 112, .2);}
+    100%{background-color: rgba(255, 112, 112, .2);}
+}
+@keyframes loader1m{
+    0%{background-color: rgba(255, 112, 112, .2);}
+    25%{background-color: rgba(255, 112, 112, .2);}
+    50%{background-color: rgba(255, 112, 112, 1);}
+    75%{background-color: rgba(255, 112, 112, .2);}
+    100%{background-color: rgba(255, 112, 112, .2);}
+}
+
+@-webkit-keyframes loader1d{
+    0%{background-color: rgba(255, 112, 112, .2);}
+    25%{background-color: rgba(255, 112, 112, .2);}
+    50%{background-color: rgba(255, 112, 112, .2);}
+    75%{background-color: rgba(255, 112, 112, 1);}
+    100%{background-color: rgba(255, 112, 112, .2);}
+}
+@keyframes loader1d{
+    0%{background-color: rgba(255, 112, 112, .2);}
+    25%{background-color: rgba(255, 112, 112, .2);}
+    50%{background-color: rgba(255, 112, 112, .2);}
+    75%{background-color: rgba(255, 112, 112, 1);}
+    100%{background-color: rgba(255, 112, 112, .2);}
+}
+
+
+
+.loader2:before{
+    content: "";
+    position: absolute;
+    z-index: 10;
+    top: 0px;
+    left: -25px;
+    height: 12px;
+    width: 12px;
+    border-radius: 12px;
+    -webkit-animation: loader2g 3s ease-in-out infinite;
+    animation: loader2g 3s ease-in-out infinite;
+}
+
+.loader2{
+    position: relative;
+    width: 12px;
+    height: 12px;
+    top: 46%;
+    left: 46%;
+    border-radius: 12px;
+    -webkit-animation: loader2m 3s ease-in-out infinite;
+    animation: loader2m 3s ease-in-out infinite;
+}
+
+
+.loader2:after{
+    content: "";
+    position: absolute;
+    z-index: 10;
+    top: 0px;
+    left: 25px;
+    height: 10px;
+    width: 10px;
+    border-radius: 10px;
+    -webkit-animation: loader2d 3s ease-in-out infinite;
+    animation: loader2d 3s ease-in-out infinite;
+}
+
+@-webkit-keyframes loader2g{
+    0%{background-color: rgba(52, 44, 152, .2);}
+    25%{background-color: rgba(52, 44, 152, 1);}
+    50%{background-color: rgba(52, 44, 152, .2);}
+    75%{background-color: rgba(52, 44, 152, .2);}
+    100%{background-color: rgba(52, 44, 152, .2);}
+}
+@keyframes loader2g{
+    0%{background-color: rgba(52, 44, 152, .2);}
+    25%{background-color: rgba(52, 44, 152, 1);}
+    50%{background-color: rgba(52, 44, 152, .2);}
+    75%{background-color: rgba(52, 44, 152, .2);}
+    100%{background-color: rgba(52, 44, 152, .2);}
+}
+
+@-webkit-keyframes loader2m{
+    0%{background-color: rgba(52, 44, 152, .2);}
+    25%{background-color: rgba(52, 44, 152, .2);}
+    50%{background-color: rgb(52, 44, 152, 1);}
+    75%{background-color: rgba(52, 44, 152, .2);}
+    100%{background-color: rgba(52, 44, 152, .2);}
+}
+@keyframes loader2m{
+    0%{background-color: rgba(52, 44, 152, .2);}
+    25%{background-color: rgba(52, 44, 152, .2);}
+    50%{background-color: rgba(52, 44, 152, 1);}
+    75%{background-color: rgba(52, 44, 152, .2);}
+    100%{background-color: rgba(52, 44, 152, .2);}
+}
+
+@-webkit-keyframes loader2d{
+    0%{background-color: rgba(52, 44, 152, .2);}
+    25%{background-color: rgba(52, 44, 152, .2);}
+    50%{background-color: rgba(52, 44, 152, .2);}
+    75%{background-color: rgba(52, 44, 152, 1);}
+    100%{background-color: rgba(52, 44, 152, .2);}
+}
+@keyframes loader2d{
+    0%{background-color: rgba(52, 44, 152, .2);}
+    25%{background-color: rgba(52, 44, 152, .2);}
+    50%{background-color: rgba(52, 44, 152, .2);}
+    75%{background-color: rgba(52, 44, 152, 1);}
+    100%{background-color: rgba(52, 44, 152, .2);}
+}
+/*
+
+************************ sk-fading-circle
+
+*/
+
+/*
+
+**********************
+
+
+*/
+
+.dropdown-enter-active, .dropdown-leave-active {
+    transition: opacity .2s;
+    animation: dropdown 200ms normal;
+}
+.dropdown-enter, .dropdown-leave-active {
+    opacity: 0;
+    animation: dropdown-out 200ms normal;
+    transition: opacity .2s;
+}
+@keyframes dropdown {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+    to {
+        opacity: 1;
+    }
+}
+@keyframes dropdown-out {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+}
