@@ -58,10 +58,20 @@ export default defineNuxtConfig({
         }
     },
 
+    vite: {
+        optimizeDeps: {
+            include: [
+                "@headlessui/vue"
+            ]
+        }
+    },
+
     experimental: {
         writeEarlyHints: false
     },
 
     //   Currently still needed
-    build: {}
+    build: {
+        transpile: ["@headlessui/vue"],
+    }
 });
