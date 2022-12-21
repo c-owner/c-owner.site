@@ -1,5 +1,8 @@
 <template>
-    <div></div>
+    <div>
+        <h1>Index</h1>
+        <div class="badge">touch</div>
+    </div>
 </template>
 
 <script lang="ts">
