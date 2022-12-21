@@ -25,15 +25,6 @@ const str: string = 'test';
         <h1>Index</h1>
         <div class="badge">touch</div>
 
-        <Teleport to="body">
-            <div class="badge">SSR teleport</div>
-        </Teleport>
-
-        <ClientOnly>
-            <Teleport to="body">
-                <div>Hello from a client-side teleport!</div>
-            </Teleport>
-        </ClientOnly>
     </div>
 </template>
 

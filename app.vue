@@ -18,7 +18,10 @@
     });
 </script>
 <template>
-    <nuxt-layout>
-        <nuxt-page />
-    </nuxt-layout>
+    <NuxtLayout>
+        <div class="dark:bg-black min-h-screen dark:text-white">
+            <NuxtPage />
+        </div>
+
+    </NuxtLayout>
 </template>

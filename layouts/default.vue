@@ -4,8 +4,8 @@
 
 <template>
     <div class="dark:bg-black">
-        <Navbar />
+        <Navbar/>
 
-        <slot class="mx-auto p-4" />
+        <slot/>
     </div>
 </template>
