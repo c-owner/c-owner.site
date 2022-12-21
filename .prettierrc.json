@@ -1,11 +1,12 @@
 {
-	"endOfLine": "auto",
+    "arrowParens": "always",
+    "endOfLine": "lf",
 	"printWidth": 120,
 	"htmlWhitespaceSensitivity": "css",
 	"semi": true,
-	"singleQuote": false,
+	"singleQuote": true,
 	"tabWidth": 4,
-	"trailingComma": "all",
+	"trailingComma": "none",
 	"useTabs": false,
 	"vueIndentScriptAndStyle": true,
 	"bracketSameLine": true,
@@ -20,7 +21,6 @@
 		{
 			"files": "*.json",
 			"options": {
-				"printWidth": 120,
 				"semi": false,
 				"bracketSpacing": true,
 				"trailingComma": "all"

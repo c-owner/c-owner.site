@@ -1,26 +1,4 @@
 {
-	"root": true,
-	"env": {
-		"browser": true,
-		"es2021": true,
-		"node": true
-	},
-	"ignorePatterns": ["node_modules/*", "dist/*", "!.prettierrc"],
-	"extends": [
-		"plugin:tailwindcss/recommended",
-		"plugin:prettier/recommended",
-		"standard",
-		"plugin:vue/recommended"
-	],
-	"plugins": ["tailwindcss", "prettier", "vue", "import"],
-	"rules": {
-		"tailwindcss/classnames-order": "warn",
-		"tailwindcss/enforces-negative-arbitrary-values": "warn",
-		"tailwindcss/enforces-shorthand": "warn",
-		"tailwindcss/migration-from-tailwind-2": "warn",
-		"tailwindcss/no-arbitrary-value": "off",
-		"tailwindcss/no-custom-classname": "warn",
-		"tailwindcss/no-contradicting-classname": "error",
-		"prettier/prettier": ["error", {}]
-	}
+    "ignorePatterns": ["node_modules/*", "dist/*", "!.prettierrc"],
+    "extends": ["plugins:react/recommended", "plugin:prettier/recommended"]
 }

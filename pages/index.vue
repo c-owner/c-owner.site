@@ -1,6 +1,5 @@
 <script setup lang="ts">
-    const styleCode: string = "color: #FFF;background-color: darkslategrey;width=250px;height:150px;font-size:34px;";
-    console.log("%c Todo ", styleCode);
+    const str: string = 'test';
 </script>
 
 <template>
