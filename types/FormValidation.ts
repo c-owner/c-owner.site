@@ -1,6 +1,6 @@
 type FormValidation = {
     hasErrors: boolean
-    erros?: Map<string, { message: InputValidation; }>
+    errors?: Map<string, { message: InputValidation; }>
     loggedIn?: boolean
 };
 
