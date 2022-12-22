@@ -40,3 +40,15 @@ npm run preview
 ```
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+
+
+---
+## Server
+
+### Module
+- zod 
+- @sidebase/nuxt-parse
+- bcrypt
+- prisma
+- dotenv-cli
+- @prisma/client

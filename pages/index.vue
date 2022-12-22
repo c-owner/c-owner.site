@@ -7,14 +7,13 @@
         <div class="py-12 theme-mode dark:bg-black">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center">
-                    <img class="w-auto" src="~/assets/images/maxresdefault.jpg" alt="dude image" />
+                    <img class="w-auto mx-auto transition duration-500 scale-50 md:hover:scale-110" src="/img/logo_short.png" alt="dude image" />
 
-                    <p
-                        class="mt-2 text-3xl leading-8 font-extrabold tracking-tight md:text-7xl dark:text-white">
+                    <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight md:text-7xl dark:text-white">
                         Corner
-                        <span
-                            class="bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-teal400 hover:from-green-500 hover:to-teal-400">
-                            Step by Step Test</span>
+                        <span class="bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-teal400 hover:from-green-500 hover:to-teal-400">
+                            TODO, VIDEOS
+                        </span>
                     </p>
 
                 </div>
