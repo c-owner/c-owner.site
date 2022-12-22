@@ -4,7 +4,7 @@
         "build": "nuxt build",
         "dev": "nuxt dev --port=3500",
         "generate": "nuxt generate",
-        "preview": "PORT=80 forever .output/server/index.mjs",
+        "preview": "PORT=80 nodemon .output/server/index.mjs",
         "postinstall": "nuxt prepare",
         "prettier": "prettier --write \"**/*.{js,vue,ts,css,scss}\"",
         "release": "yarn build && standard-version && git push --follow-tags && npm publish",
