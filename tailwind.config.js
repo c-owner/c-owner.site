@@ -10,7 +10,7 @@ module.exports = {
         './plugins/**/*.{js,ts}',
         './nuxt.config.{js,ts}'
     ],
-    darkMode: 'class',
+    darkMode: ['class', '[data-mode="dark"]'],
     theme: {
         extend: {
             fontFamily: {
