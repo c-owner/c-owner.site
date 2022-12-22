@@ -22,5 +22,6 @@ export async function getUserBySessionToken(authToken: string): Promise<User|und
     const session = await getSessionByAuthToken(authToken)
     console.log(session);
 
+    // @ts-ignore
     return sanitizeUserForFrontend(session.user)
 }
