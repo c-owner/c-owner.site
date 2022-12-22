@@ -46,7 +46,7 @@ export default defineNuxtConfig({
 
     runtimeConfig: {
         public: {
-            directusUrl: process.env.DIRECTUS_URL
+            DATABASE_URL: process.env.production ? process.env.DATABASE_URL : process.env.DATABASE_URL_DEV,
         }
     },
 
