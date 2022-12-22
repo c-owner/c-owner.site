@@ -112,12 +112,12 @@ watch(user, async () => {
                     <span
                         class="hidden md:block ml-5 cursor-pointer"
                         @click="setColorTheme($colorMode.preference === 'dark' ? 'light' : 'dark')">
-                        <i class="ph-moon-stars-fill text-3xl h-6 w-6 text-gray-50 lg:block hover:dark:text-yellow-400 hover:text-yellow-400"
+                        <i class="ph-moon-stars-fill text-3xl w-6 text-gray-50 lg:block hover:dark:text-yellow-400 hover:text-yellow-400"
                            v-if="$colorMode.value === 'dark'" />
-                        <i class="ph-sun-dim-fill text-3xl h-6 w-6 lg:block hover:dark:text-yellow-400 hover:text-yellow-400"
+                        <i class="ph-sun-dim-fill text-3xl w-6 lg:block hover:dark:text-yellow-400 hover:text-yellow-400"
                            v-if="$colorMode.value === 'light'" />
                     </span>
-                    <User :isLoggedIn="isLoggedIn" class="hidden md:block ml-5" />
+                    <User v-if="user" :user="user" :isLoggedIn="isLoggedIn" class="hidden md:block ml-5" />
                 </div>
             </div>
         </div>
