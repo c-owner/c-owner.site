@@ -27,7 +27,7 @@
 <template>
 
         <NuxtLayout>
-            <div class="dark:bg-black min-h-screen dark:text-white">
+            <div class="dark:bg-slate-800 min-h-screen dark:text-white">
                 <NuxtPage />
             </div>
         </NuxtLayout>

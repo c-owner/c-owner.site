@@ -1,5 +1,6 @@
 import { parseBodyAs, z } from "@sidebase/nuxt-parse";
 import { H3Event } from "h3";
+import { ZodSchema } from "zod";
 const bodySchema = z.object({
     username: z.string({
         required_error: 'username required',
@@ -19,5 +20,5 @@ const bodySchema = z.object({
 })
 
 export default async function registerRequest(event: H3Event) {
-    return await parseBodyAs(event, bodySchema)
+    return await parseBodyAs<ZodSchema>(event, bodySchema)
 }

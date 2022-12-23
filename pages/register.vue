@@ -21,7 +21,7 @@
 </script>
 
 <template>
-    <div class="dark:bg-black h-screen">
+    <div class="h-screen">
         <div class="flex items-center justify-center px-4 sm:px-6 lg:px-8">
             <div class="max-w-md w-full">
                 <CornerLogo />
@@ -41,7 +41,7 @@
                     </ul>
                 </div>
 
-                <form @submit.prevent.stop class="mt-8 space-y-6" action="#" method="POST">
+                <form @submit.stop.prevent="postRegisterForm" class="mt-8 space-y-6" action="#" method="POST">
                     <input type="hidden" name="remember" value="true" />
                     <div class="rounded-md shadow-sm -space-y-px mb-1">
                         <div>
@@ -104,24 +104,23 @@
 
                     <div class="flex items-center justify-between">
                         <div class="text-sm">
-                            <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">
+                            <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-300 dark:hover:text-indigo-100">
                                 비밀번호 찾기
                             </a>
                         </div>
                     </div>
 
                     <div></div>
+                    <button type="submit"
+                        class="mt-5 group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                        <span class="absolute left-0 inset-y-0 flex items-center pl-3">
+                            <!-- Heroicon name: solid/lock-closed -->
+                            <i class="ph-lock-simple-fill h-5 w-5 text-indigo-500 group-hover:text-indigo-400 items-center" />
+                        </span>
+                        가입하기
+                    </button>
                 </form>
 
-                <button type="submit"
-                    @click.prevent="postRegisterForm"
-                    class="mt-5 group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                    <span class="absolute left-0 inset-y-0 flex items-center pl-3">
-                        <!-- Heroicon name: solid/lock-closed -->
-                        <i class="ph-lock-simple-fill h-5 w-5 text-indigo-500 group-hover:text-indigo-400 items-center" />
-                    </span>
-                    가입하기
-                </button>
             </div>
         </div>
     </div>

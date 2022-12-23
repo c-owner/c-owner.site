@@ -11,13 +11,11 @@ import { makeSession } from "~/server/app/services/sessionService";
 
 export default eventHandler(async (event: H3Event) => {
     try {
-        const data = await registerRequest(event)
-        // 유효성 검사
-        const validation = await validateUser(data)
+        const data = await registerRequest(event);
+        const validation = await validateUser(data); // 유효성 검사
 
         if (validation.hasErrors === true && validation.errors) {
             const errors = JSON.stringify(Object.fromEntries(validation.errors))
-
             return sendError(event, createError({ statusCode: 422, data: errors }))
         }
 
@@ -38,6 +36,7 @@ export default eventHandler(async (event: H3Event) => {
 
 
     } catch (error: any) {
+        console.log(error);
         if (error.data instanceof ZodError) {
             return await sendZodErrorResponse(event, error.data)
         }

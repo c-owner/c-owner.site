@@ -3,7 +3,7 @@
 </script>
 
 <template>
-    <div class="dark:bg-black">
+    <div class="">
         <Navbar/>
 
         <slot/>

@@ -4,10 +4,10 @@
 
 <template>
     <div class="mx-auto text-center">
-        <div class="py-12 theme-mode dark:bg-black">
+        <div class="py-12">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center">
-                    <img class="w-auto mx-auto transition duration-500 scale-50 md:hover:scale-110" src="/img/logo_short.png" alt="dude image" />
+                    <img class="w-auto w-[50%] mx-auto transition duration-500 scale-50 md:hover:scale-90" src="/img/logo_short.png" alt="dude image" />
 
                     <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight md:text-7xl dark:text-white">
                         Corner
