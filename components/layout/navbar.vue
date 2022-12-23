@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useRouter, useState } from "#app";
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import { userLogout } from "~/composables/useAuth";
 
     const styleCode: string =
@@ -9,7 +9,7 @@ import { userLogout } from "~/composables/useAuth";
 
 
 const showSideDrawer = ref(false)
-const logout = userLogout
+
 const router = useRouter()
 const colorMode = useColorMode()
 
@@ -30,6 +30,15 @@ async function checkIfLoggedIn() {
     isLoggedIn.value = check
 }
 
+let result = null;
+async function logout() {
+    result = await userLogout();
+    console.log(result);
+
+    if (result.hasOwnProperty('message')) {
+    }
+}
+
 watch(user, async () => {
     await checkIfLoggedIn()
 }, { deep: true });
@@ -38,6 +47,7 @@ watch(user, async () => {
 
 <template>
     <div class="navbar relative dark:bg-slate-800">
+
         <div class="max-w-7xl mx-auto px-4 sm:px-6">
             <div class="flex justify-between border-b-2 border-gray-100">
                 <div class="flex justify-between min-w-full md:min-w-0">
@@ -60,7 +70,6 @@ watch(user, async () => {
                             <i class="ph-sun-dim-fill text-3xl lg:block hover:dark:text-yellow-400 hover:text-yellow-400"
                                v-if="$colorMode.value === 'light'" />
                         </span>
-                        <User :isLoggedIn="isLoggedIn" class="md:hidden ml-5" />
                         <NuxtLink to="/">
                             <span class="sr-only">Home</span>
                             <img
@@ -154,6 +163,9 @@ watch(user, async () => {
             <div class="py-4 overflow-y-auto my-12 dark-mode dark:bg-slate-800">
                 <ul class="space-y-2">
                     <li>
+                        <User v-if="user" :user="user" :isLoggedIn="isLoggedIn" class="hidden md:block ml-5" />
+                    </li>
+                    <li>
                         <button type="button" class="text-gray-500 ml-2 mt-2"
                             @click="setColorTheme($colorMode.preference === 'dark' ? 'light' : 'dark')">
                             <i class="ph-moon-stars-fill text-2xl text-black lg:block hover:dark:text-yellow-400 hover:text-yellow-400"
@@ -222,12 +234,11 @@ watch(user, async () => {
                         </NuxtLink>
                     </li>
                     <li @click="logout" v-if="isLoggedIn">
-                        <span
-                            to="/register"
+                        <div
                             class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                            <i class="ph-sign-out text-2xl" />
                             <span class="flex-1 ml-3 whitespace-nowrap">로그아웃</span>
-                        </span>
+                        </div>
                     </li>
                 </ul>
             </div>
