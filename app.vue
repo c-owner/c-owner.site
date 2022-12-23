@@ -25,14 +25,12 @@
 </script>
 
 <template>
-    <div class="dark:bg-black dark:text-white">
-        
+
         <NuxtLayout>
             <div class="dark:bg-black min-h-screen dark:text-white">
                 <NuxtPage />
             </div>
         </NuxtLayout>
-    </div>
 </template>
 
 <style>

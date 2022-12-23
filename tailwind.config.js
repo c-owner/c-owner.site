@@ -1,22 +1,15 @@
 import colors from 'tailwindcss/colors'
-import defaultTheme from 'tailwindcss/defaultTheme'
-import tailwindForms from '@tailwindcss/forms'
-/** @type {import('tailwindcss').Config} */
-module.exports = {
+
+export default {
     darkMode: 'class',
+    plugins: [
+        require('@tailwindcss/typography')
+    ],
     theme: {
         extend: {
-            fontFamily: {
-                sans: ['Inter var', ...defaultTheme.fontFamily.sans]
-            },
             colors: {
-                primary: colors.gray,
-                space: '#5c6ac6'
+                primary: colors.gray
             }
         }
-    },
-    plugins: [
-        tailwindForms,
-        require('@tailwindcss/typography')
-    ]
+    }
 }

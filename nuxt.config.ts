@@ -39,10 +39,20 @@ export default defineNuxtConfig({
         globalName: "__NUXT_COLOR_MODE__",
         componentName: "ColorScheme",
         classPrefix: "",
-        classSuffix: "-mode",
+        classSuffix: "",
         storageKey: "nuxt-color-mode"
     },
-
+    content: {
+        highlight: {
+            theme: 'github-dark',
+            preload: [
+                'vue',
+            ]
+        },
+        navigation: {
+            fields: ['author', 'subject', 'position']
+        }
+    },
 
     runtimeConfig: {
         public: {
