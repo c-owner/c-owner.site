@@ -12,7 +12,6 @@ export default defineNuxtConfig({
     ],
 
     plugins: [
-        "@/plugins/error.ts"
     ],
 
     modules: [

@@ -43,6 +43,10 @@ watch(user, async () => {
     await checkIfLoggedIn()
 }, { deep: true });
 
+function toggleSideDrawer() {
+    console.log("????");
+    showSideDrawer.value = !showSideDrawer.value
+}
 </script>
 
 <template>
@@ -109,7 +113,7 @@ watch(user, async () => {
                         로그인
                     </NuxtLink>
 
-                    <User v-if="user" :user="user" :isLoggedIn="isLoggedIn" class="hidden md:block ml-5" />
+                    <User @toggleSideDrawer="toggleSideDrawer" v-if="user" :user="user" :isLoggedIn="isLoggedIn" class="hidden md:block ml-5" />
 
                     <NuxtLink
                         v-if="!user"
