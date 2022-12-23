@@ -160,7 +160,7 @@ watch(user, async () => {
                 <span class="sr-only">닫기</span>
             </button>
 
-            <div class="py-4 overflow-y-auto my-12 dark-mode dark:bg-slate-800">
+            <div class="py-4 overflow-y-auto my-12 dark:bg-slate-800">
                 <ul class="space-y-2">
                     <li>
                         <User v-if="user" :user="user" :isLoggedIn="isLoggedIn" class="hidden md:block ml-5" />

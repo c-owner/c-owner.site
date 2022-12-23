@@ -2,6 +2,7 @@
     import { ref } from '@vue/reactivity';
     import { registerWithEmail } from '~/composables/useAuth';
     import type { Ref } from 'vue';
+    import CornerLogo from "~/components/layout/CornerLogo.vue";
 
     const email: Ref<string> = ref('');
     const password: Ref<string> = ref('');
@@ -23,11 +24,7 @@
     <div class="dark:bg-black h-screen">
         <div class="flex items-center justify-center px-4 sm:px-6 lg:px-8">
             <div class="max-w-md w-full">
-                <div
-                    class="lg:flex mt-10 justify-center transition duration-500 scale-80 md:hover:scale-110">
-                    <img class="h-24 w-auto mr-5" src="/img/logo_clear_fsj.png" alt="logo" />
-                    <h1 class="py-9 text-center text-5xl font-extrabold">Corner</h1>
-                </div>
+                <CornerLogo />
                 <div>
                     <h2 class="text-center text-3xl font-extrabold mt-5">회원가입</h2>
                 </div>
