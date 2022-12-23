@@ -36,7 +36,6 @@ export default eventHandler(async (event: H3Event) => {
 
 
     } catch (error: any) {
-        console.log(error);
         if (error.data instanceof ZodError) {
             return await sendZodErrorResponse(event, error.data)
         }

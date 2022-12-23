@@ -49,13 +49,13 @@ watch(user, async () => {
     <div class="navbar relative dark:bg-slate-800">
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6">
-            <div class="flex justify-between border-b-2 border-gray-100">
+            <div class="flex justify-between border-b-2 border-gray-100 dark:border-gray-700">
                 <div class="flex justify-between min-w-full md:min-w-0">
                     <div class="md:hidden mt-4">
                         <button
                             @click="showSideDrawer = true"
                             type="button"
-                            class="bg-white rounded-md p-2 inline-flex text-gray-400 hover:text-gray-500 dark:bg-black dark:text-gray-200 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+                            class="rounded-md p-2 inline-flex text-gray-400 hover:text-gray-500 dark:text-gray-200 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
                             aria-expanded="false">
                             <span class="sr-only dark:bg-black">Open menu</span>
                             <i class="ph-list text-2xl"></i>
@@ -65,9 +65,9 @@ watch(user, async () => {
                         <span
                             class="md:hidden ml-5 cursor-pointer"
                             @click="setColorTheme($colorMode.preference === 'dark' ? 'light' : 'dark')">
-                            <i class="ph-moon-stars-fill text-3xl text-gray-50 lg:block hover:dark:text-yellow-400 hover:text-yellow-400"
+                            <i class="ph-moon-stars-fill text-2xl dark:text-yellow-200 lg:block hover:dark:text-yellow-400 hover:text-yellow-400"
                                v-if="$colorMode.value === 'dark'" />
-                            <i class="ph-sun-dim-fill text-3xl lg:block hover:dark:text-yellow-400 hover:text-yellow-400"
+                            <i class="ph-sun-dim-fill text-2xl dark:text-yellow-200 text-orange-500 lg:block hover:dark:text-yellow-400 hover:text-yellow-400"
                                v-if="$colorMode.value === 'light'" />
                         </span>
                         <NuxtLink to="/">
@@ -81,22 +81,22 @@ watch(user, async () => {
 
                 <nav class="hidden md:flex space-x-10 items-center">
                     <NuxtLink to="/todos">
-                        <span class="text-base font-medium text-gray-500 hover:text-gray-900 dark:text-white">
+                        <span class="text-base font-medium text-gray-500 hover:text-gray-900 dark:text-white dark:hover:text-gray-300">
                             할일
                         </span>
                     </NuxtLink>
                     <NuxtLink to="/videos">
-                        <span class="text-base font-medium text-gray-500 hover:text-gray-900 dark:text-white">
+                        <span class="text-base font-medium text-gray-500 hover:text-gray-900 dark:text-white dark:hover:text-gray-300">
                             비디오
                         </span>
                     </NuxtLink>
                     <NuxtLink to="/tutorials">
-                        <span class="text-base font-medium text-gray-500 hover:text-gray-900 dark:text-white">
+                        <span class="text-base font-medium text-gray-500 hover:text-gray-900 dark:text-white dark:hover:text-gray-300">
                             튜토리얼
                         </span>
                     </NuxtLink>
                     <NuxtLink to="/ask-corner/search">
-                        <span class="text-base font-medium text-gray-500 hover:text-gray-900 dark:text-white">
+                        <span class="text-base font-medium text-gray-500 hover:text-gray-900 dark:text-white dark:hover:text-gray-300">
                             질문
                         </span>
                     </NuxtLink>
@@ -137,11 +137,9 @@ watch(user, async () => {
         <!-- drawer component -->
         <transition name="slide-left" mode="in-out">
 
-        <template v-if="showSideDrawer">
-
-        <div
+        <div v-if="showSideDrawer"
             id="drawer-navigation my-12"
-            class="fixed z-40 top-0 h-screen slide-right p-4 overflow-y-auto w-80 bg-white dark:bg-slate-800"
+            class="box-shadow-7 fixed z-40 top-0 h-screen transition-all duration-700 p-4 overflow-y-auto w-80 bg-white dark:bg-slate-800"
             tabindex="-1"
             aria-labelledby="drawer-navigation-label">
             <h5
@@ -160,7 +158,7 @@ watch(user, async () => {
                 <span class="sr-only">닫기</span>
             </button>
 
-            <div class="py-4 overflow-y-auto my-12 dark:bg-slate-800">
+            <div class="py-4 overflow-y-auto my-12">
                 <ul class="space-y-2">
                     <li>
                         <User v-if="user" :user="user" :isLoggedIn="isLoggedIn" class="hidden md:block ml-5" />
@@ -168,16 +166,16 @@ watch(user, async () => {
                     <li>
                         <button type="button" class="text-gray-500 ml-2 mt-2"
                             @click="setColorTheme($colorMode.preference === 'dark' ? 'light' : 'dark')">
-                            <i class="ph-moon-stars-fill text-2xl text-black lg:block hover:dark:text-yellow-400 hover:text-yellow-400"
+                            <i class="ph-moon-stars-fill text-2xl dark:text-yellow-200 lg:block hover:dark:text-yellow-400 hover:text-yellow-400"
                                v-if="$colorMode.value === 'dark'" />
-                            <i class="ph-sun-dim-fill text-2xl text-black lg:block hover:dark:text-yellow-400 hover:text-yellow-400"
+                            <i class="ph-sun-dim-fill text-2xl dark:text-yellow-200 text-orange-500 lg:block hover:dark:text-yellow-400 hover:text-yellow-400"
                                v-if="$colorMode.value === 'light'" />
                         </button>
                     </li>
                     <li>
                         <NuxtLink to="https://github.com/c-owner/www.n-todo.com">
                             <img src="~/assets/images/icons8-github.png" alt="github"
-                                 class="text-gray-500 dark:text-gray-200 h-6 w-6 ml-2 mt-2" />
+                                 class="text-gray-500 dark:text-gray-200 h-6 w-6 ml-2 mt-2 hover:bg-blue-700" />
                         </NuxtLink>
                     </li>
                     <li>
@@ -243,8 +241,6 @@ watch(user, async () => {
                 </ul>
             </div>
         </div>
-
-        </template>
 
         </transition>
     </div>
