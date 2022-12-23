@@ -38,10 +38,18 @@ export async function useLoggedIn() {
 }
 
 export async function userLogout() {
-    await useFetch('/api/auth/logout')
-    useState('user').value = null
-    await useRouter().push('/')
-}{}
+    const logout = await $fetch('/api/auth/logout', {
+        method: 'POST',
+    })
+    if (logout) {
+        useState('user').value = null
+        await useRouter().push('/')
+        return {
+            result: logout
+        }
+    }
+    return useErrorMapper("로그아웃 실패")
+}
 
 export async function registerWithEmail(
     username: string,

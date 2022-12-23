@@ -2,8 +2,8 @@
     import { ref } from '@vue/reactivity';
     import { userLogout } from '~/composables/useAuth';
     import { onClickOutside } from '@vueuse/core';
+    import { defineProps } from "vue";
 
-    const logout = userLogout;
     const hideActions = ref(true);
     const userActions = ref(null);
 
@@ -12,6 +12,12 @@
     });
 
     onClickOutside(userActions, () => (hideActions.value = true));
+
+
+    async function logout() {
+        const result = await userLogout();
+        console.log(result);
+    }
 </script>
 
 <template>
