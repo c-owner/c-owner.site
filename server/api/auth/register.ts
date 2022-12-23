@@ -2,7 +2,7 @@ import bcrypt from 'bcrypt'
 import { createError, eventHandler, H3Event, sendError } from "h3";
 import { ZodError } from 'zod'
 import sendZodErrorResponse from '~/server/app/errors/responses/ZodErrorsResponse'
-import registerRequest from '~/server/app/services/RegisterRequest'
+import registerRequest from '~/server/app/formRequests/RegisterRequest'
 import { validateUser } from '~/server/app/services/userService'
 import { AuthUser } from "~/types/AuthUser";
 import { createUser } from "~/server/database/repositories/userRepository";
