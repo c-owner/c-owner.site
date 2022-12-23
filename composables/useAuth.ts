@@ -64,3 +64,20 @@ export async function registerWithEmail(
         return useErrorMapper(error.data.data)
     }
 }
+
+export async function loginWithEmail(usernameOrEmail: string, password: string): Promise<FormValidation> {
+    try {
+        const result = await $fetch('/api/auth/login', { method: 'POST', body: { usernameOrEmail: usernameOrEmail, password: password } })
+
+        // @ts-ignore
+        if (!result?.id) {
+            throw Error('something went wrong')
+        }
+        useState('user').value = result
+        await useRouter().push('/todos')
+
+        return { hasErrors: false, loggedIn: true }
+    } catch (error: any) {
+        return useErrorMapper(error.data.data)
+    }
+}
