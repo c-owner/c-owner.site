@@ -12,7 +12,8 @@
         "ci:test": "yarn prisma migrate deploy && vitest",
         "prisma:generate": "dotenv -e .env -- npx prisma generate",
         "prisma:migrate": "dotenv -e .env -- npx prisma migrate deploy --name prod",
-        "prisma:dev_migrate": "prisma migrate dev"
+        "prisma:dev_migrate": "prisma migrate dev",
+        "git:push-merge-corner": "git push && git checkout master && git merge dev/corner && git push && git checkout dev/corner"
     },
     "devDependencies": {
         "@headlessui/vue": "^1.7.7",
