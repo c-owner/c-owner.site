@@ -6,8 +6,6 @@ const searchInput = ref("");
 
 const { data: questions, pending, refresh, error } = await useFetch<BQuestion[]>(() => `/api/ask-corner/search?search=${searchInput.value}`, {server:false})
 
-refresh()
-
 function search() {
     if (searchInput.value.length >= 3) {
         refresh()
