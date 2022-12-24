@@ -68,8 +68,13 @@
                     v-if="question">
                     <div class="max-w-xxl w-full p-4">
                         <div class="p-8 bg-white dark:bg-slate-700 rounded shadow-md">
-                            <div class="flex justify-end dark:text-gray-300">
-                                {{ question.authName }}
+                            <div class="flex justify-between dark:text-gray-300 text-sm">
+                                <span>
+                                    No. {{ question.id }}
+                                </span>
+                                <span class="dark:text-indigo-300">
+                                    {{ question.authName }}
+                                </span>
                             </div>
 
                             <BoardTiptap v-if="!showEditForm" :data="question" label="" :editable="false" />
@@ -93,10 +98,12 @@
                     <div class="max-w-xxl w-full p-4">
 
                         <div class="p-8 bg-white dark:bg-slate-900 rounded shadow-md">
-                            <div class="flex justify-end dark:text-gray-300">
-                                {{ answer.authName }}
+                            <div class="flex justify-end dark:text-gray-300 text-sm">
+                                <span class="dark:text-blue-200">
+                                    {{ answer.authorName }}
+                                </span>
                             </div>
-                            <p class="dark:text-gray-300">{{answer.text}}</p>
+                            <p class="dark:text-gray-300" v-html="answer.text"></p>
                         </div>
                     </div>
                 </div>
