@@ -77,6 +77,12 @@ export default defineNuxtConfig({
             include: [
                 "@headlessui/vue"
             ]
+        },
+        server: {
+            https: {
+                key: fs.readFileSync(path.resolve(__dirname, "cert", "server.key")),
+                cert: fs.readFileSync(path.resolve(__dirname, "cert", "server_cert.pem"))
+            }
         }
     },
 
