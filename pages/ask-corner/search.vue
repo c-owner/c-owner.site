@@ -1,5 +1,4 @@
 <script setup lang="ts">
-
 </script>
 
 <template>
@@ -17,6 +16,8 @@
             <ElementsAskSidebar />
 
             <div class="md:w-1/3 z-1 flex justify-right relative"></div>
+
+            <BoardQuestion />
         </div>
 
     </div>

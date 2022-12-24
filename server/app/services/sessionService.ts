@@ -18,7 +18,7 @@ export async function makeSession(user: User, event: H3Event): Promise<User | un
 
 }
 
-export async function getUserBySessionToken(authToken: string): Promise<User|undefined> {
+export async function getUserBySessionToken(authToken: string | undefined): Promise<| undefined> {
     const session = await getSessionByAuthToken(authToken)
 
     // @ts-ignore

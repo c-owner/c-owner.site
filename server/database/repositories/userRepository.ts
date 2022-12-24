@@ -40,3 +40,30 @@ export async function createUser(data: AuthUser) {
     return user
 }
 
+export async function getUserById(id: number) {
+    return await prisma.user.findUnique({
+        where: {
+            id: id
+        },
+        select: {
+            id: true,
+            username: true,
+            email: true,
+            stripeCustomerId: true
+        }
+    })
+}
+
+export async function getUserByStripeCustomerId(stripeCustomerId: string) {
+    return await prisma.user.findFirst({
+        where: {
+            stripeCustomerId: stripeCustomerId
+        },
+        select: {
+            id: true,
+            username: true,
+            email: true,
+            stripeCustomerId: true
+        }
+    })
+}

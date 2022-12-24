@@ -18,13 +18,14 @@ export async function createSession(sessionData: AuthSession): Promise<AuthSessi
     return create
 }
 
-export async function getSessionByAuthToken(authToken: string): Promise<AuthSession> {
+export async function getSessionByAuthToken(authToken: string | undefined): Promise<AuthSession> {
     const user: User = await getUserByAuthToken(authToken) as unknown as User
 
     return { authToken, user }
 }
 
-async function getUserByAuthToken(authToken: string): Promise<User | null> {
+async function getUserByAuthToken(authToken: string | undefined): Promise<| null> {
+    // @ts-ignore
     return prisma.session
         .findUnique({
             where: {
