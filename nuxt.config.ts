@@ -1,3 +1,6 @@
+import * as fs from "fs";
+import path from "path";
+
 export default defineNuxtConfig({
     // https://v3.nuxtjs.org/guide/directory-structure/nuxt.config/
     // As of RC12 Nuxt 3 supports Hybrid rendering mode
@@ -57,6 +60,12 @@ export default defineNuxtConfig({
     runtimeConfig: {
         public: {
             DATABASE_URL: process.env.production ? process.env.DATABASE_URL : process.env.DATABASE_URL_DEV,
+        },
+        server: {
+            https: {
+                key: fs.readFileSync(path.resolve(__dirname, 'server.key')),
+                cert: fs.readFileSync(path.resolve(__dirname, 'server.crt'))
+            }
         }
     },
 
