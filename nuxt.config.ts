@@ -12,11 +12,10 @@ export default defineNuxtConfig({
     css: [
         "@/assets/styles/tailwind.css",
         "@/assets/styles/index.scss",
-        "@/assets/styles/global.scss",
+        "@/assets/styles/global.scss"
     ],
 
-    plugins: [
-    ],
+    plugins: [],
 
     modules: [
         "@nuxtjs/tailwindcss",
@@ -47,20 +46,20 @@ export default defineNuxtConfig({
     },
     content: {
         highlight: {
-            theme: 'github-dark',
+            theme: "github-dark",
             preload: [
-                'vue',
+                "vue"
             ]
         },
         navigation: {
-            fields: ['author', 'subject', 'position']
+            fields: ["author", "subject", "position"]
         }
     },
 
     runtimeConfig: {
         public: {
             DATABASE_URL: process.env.DATABASE_URL
-        },
+        }
     },
 
     postcss: {
@@ -77,11 +76,6 @@ export default defineNuxtConfig({
             include: [
                 "@headlessui/vue"
             ]
-        },
-        server: {
-            hmr: {
-                host: process.env.NODE_ENV === "development" ? "127.0.0.1" : "c-owner.site",
-            },
         }
     },
 
@@ -91,6 +85,6 @@ export default defineNuxtConfig({
 
     //   Currently still needed
     build: {
-        transpile: ["@headlessui/vue"],
+        transpile: ["@headlessui/vue"]
     }
 });
