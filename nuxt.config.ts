@@ -69,6 +69,12 @@ export default defineNuxtConfig({
             }
         }
     },
+    devServer: {
+        https: {
+            key: fs.readFileSync(path.join(__dirname, ".cert", "localhost-key.pem"), "utf-8"),
+            cert: fs.readFileSync(path.join(__dirname, ".cert", "localhost.pem"), "utf-8")
+        }
+    },
 
     postcss: {
         plugins: {

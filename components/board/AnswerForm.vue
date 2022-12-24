@@ -37,7 +37,8 @@ async function postAnswer() {
     <form @submit.stop.prevent="postAnswer">
         <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">답변</label>
         <textarea v-model="data.text" id="message" rows="4"
-                  class="block w-full shadow-sm sm:text-sm border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-900 dark:text-white dark:border-gray-600 dark:placeholder-gray-400"
+                  class="block w-full shadow-sm sm:text-sm resize-none p-4 border-gray-300 rounded-md focus:outline-none
+                  focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-900 dark:text-white dark:border-gray-600 dark:placeholder-gray-400"
                   placeholder="구체적이고 친절한 답변을 작성합니다."></textarea>
         <div class="flex justify-end">
             <button @click="postAnswer"

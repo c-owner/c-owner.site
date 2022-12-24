@@ -1,7 +1,7 @@
 <script setup lang="ts">
     import { useRouter, useState } from '#app';
-    import { ref, watch } from 'vue';
-    import { userLogout } from '~/composables/useAuth';
+    import { ref } from 'vue';
+    import { useLoggedIn, userLogout } from '~/composables/useAuth';
     import { onClickOutside } from '@vueuse/core';
 
     const styleCode: string =
@@ -20,6 +20,7 @@
         showSideDrawer.value = false;
     });
 
+    // @ts-ignore
     const colorMode = useColorMode();
     const setColorTheme = (newTheme: Theme) => {
         colorMode.preference = newTheme;
@@ -27,6 +28,7 @@
 
     async function checkIfLoggedIn() {
         const check = await useLoggedIn();
+        console.log('로그인!');
         isLoggedIn.value = check;
     }
 
@@ -34,7 +36,7 @@
     let result = null;
     async function logout() {
         result = await userLogout();
-        console.log(result);
+        console.log('로그아웃 :: ', result);
 
         if (result.hasOwnProperty('message')) {
         }
@@ -188,13 +190,12 @@
 
                 <div class="py-4 overflow-y-auto my-12">
                     <ul class="space-y-2">
-                        <li>
-                            <ElementsUser
-                                v-if="user"
-                                :user="user"
-                                :isLoggedIn="isLoggedIn"
-                                class="hidden md:block ml-5" />
-                        </li>
+                        <template v-if="isLoggedIn">
+                            <li class="dark:text-gray-300 font-normal text-base">
+                                <span class="font-bold">{{ user.name }}</span
+                                >님 환영합니다.
+                            </li>
+                        </template>
                         <li>
                             <button
                                 type="button"
@@ -213,11 +214,11 @@
                             </button>
                         </li>
                         <li>
-                            <NuxtLink to="https://github.com/c-owner/www.n-todo.com">
-                                <img
-                                    src="@/assets/images/icons8-github.png"
-                                    alt="github"
-                                    class="text-gray-500 dark:text-gray-200 h-6 w-6 ml-2 mt-2 hover:bg-blue-700" />
+                            <NuxtLink
+                                class="p-2 flex items-center text-2xl text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
+                                to="https://github.com/c-owner/www.n-todo.com">
+                                <i class="ph-github-logo-fill" />
+                                <span class="ml-2 font-extrabold text-base">Github</span>
                             </NuxtLink>
                         </li>
                         <li>
