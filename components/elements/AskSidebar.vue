@@ -52,7 +52,7 @@ function rehide() {
             </div>
         </dialog-box>
 
-        <div class=" pt-5 z-10 boarder  justify-right sm:fixed">
+        <div class="pt-5 z-10 boarder  justify-right sm:fixed box-shadow-4">
             <div class="w-100 sm:block" aria-label="Sidebar">
                 <div class="overflow-y-auto py-4 px-3 bg-gray-50 rounded dark:bg-gray-900">
                     <span v-if="route.path !== '/ask-corner/ask'" @click="goToAskForm" type="button"
