@@ -2,6 +2,9 @@
 .idea/
 .vscode/
 
+# key
+.cert/
+
 
 # node.js ignore
 node_modules
