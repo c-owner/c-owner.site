@@ -2,8 +2,8 @@
     "private": true,
     "scripts": {
         "build": "nuxt build",
-        "dev": "nuxt dev --port=3500",
-        "https-dev": "nuxt dev --port=80 --https --ssl-cert .cert/localhost.pem --ssl-key .cert/localhost-key.pem",
+        "dev": "nuxt dev --port=3500 --https --ssl-cert cert/localhost.pem --ssl-key cert/localhost-key.pem",
+        "https-dev": "nuxt dev --port=443 --https --ssl-cert cert/localhost.pem --ssl-key cert/localhost-key.pem",
         "https-prod": "sudo npx nuxi dev --https --ssl-cert cert/server_crt.pem --ssl-key cert/server.key --port=443",
         "https-prod2": "sudo npx nuxi dev --https --ssl-cert cert/server_crt.pem --ssl-key cert/server.key --port=443",
         "generate": "nuxt generate",
