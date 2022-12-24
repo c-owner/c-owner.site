@@ -39,7 +39,7 @@ function search() {
             </div>
         </div>
 
-        <transition name="fade" v-if="!pending" v-for="question in questions">
+        <transition name="fade" v-if="!pending" v-for="question in questions" :key="question.id">
             <NuxtLink v-if="question"
                       :to="`/ask-corner/question/${question.id}`"
                       class="flex flex-column justify-center hover:scale-110 transition duration-500">

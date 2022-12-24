@@ -1,5 +1,5 @@
 <script setup lang="ts">
-    import { defineProps, defineEmits, ref, onUpdated } from 'vue';
+    import { defineProps } from 'vue';
 
     const props = defineProps({
         data: {
@@ -20,7 +20,6 @@
     });
 
     const data = props.data;
-    const contentEmit = defineEmits(['update:data']);
 </script>
 
 <template>

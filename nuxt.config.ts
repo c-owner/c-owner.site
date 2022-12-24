@@ -59,7 +59,7 @@ export default defineNuxtConfig({
 
     runtimeConfig: {
         public: {
-            DATABASE_URL: process.env.production ? process.env.DATABASE_URL : process.env.DATABASE_URL_DEV,
+            DATABASE_URL: process.env.DATABASE_URL
         },
         server: {
             https: {
