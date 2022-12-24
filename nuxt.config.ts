@@ -76,6 +76,13 @@ export default defineNuxtConfig({
             include: [
                 "@headlessui/vue"
             ]
+        },
+        server: {
+            proxy: {
+                "/api": {
+                    target: process.env.NODE_ENV === "development" ? "https://localhost:3000" : "https://c-owner.site",
+                }
+            }
         }
     },
 
