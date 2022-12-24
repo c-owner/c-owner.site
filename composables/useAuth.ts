@@ -1,6 +1,6 @@
 import useErrorMapper from '~/composables/useErrorMapper'
 import { AuthSession } from '~/types/AuthSession'
-import { useFetch, useRouter, useState } from "#app";
+import { useCookie, useFetch, useRequestHeaders, useRouter, useState } from "#app";
 import { AuthUser } from "~/types/AuthUser";
 
 export const useAuthCookie = () => useCookie('auth_token')
