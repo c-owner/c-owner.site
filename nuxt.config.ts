@@ -80,8 +80,8 @@ export default defineNuxtConfig({
         },
         server: {
             https: {
-                key: fs.readFileSync(path.resolve(__dirname, "cert", "/server.key"), "utf-8"),
-                cert: fs.readFileSync(path.resolve(__dirname, "cert", "/server_cert.pem"), "utf-8")
+                key: fs.readFileSync(path.join(__dirname, "cert", "/server.key"), "utf-8"),
+                cert: fs.readFileSync(path.join(__dirname, "cert", "/server_cert.pem"), "utf-8")
             }
         }
     },
