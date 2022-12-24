@@ -88,7 +88,7 @@
                     </div>
                 </div>
 
-                <div v-for="answer in question?.answer"
+                <div v-for="answer in question?.answers" :key="answer.id"
                      class="flex flex-column justify-center hover:scale-110 transition duration-500">
                     <div class="max-w-xxl w-full p-4">
 
@@ -110,7 +110,7 @@
                 </div>
 
                 <div v-if="showAnswerForm">
-
+                    <BoardAnswerForm :questionId="questionId" @addAnswer="addAnswer" />
                 </div>
 
             </div>
