@@ -80,7 +80,7 @@ export default defineNuxtConfig({
         },
         server: {
             hmr: {
-                host: process.env.NODE_ENV === "development" ? "0.0.0.0" : "c-owner.site",
+                host: process.env.NODE_ENV === "development" ? "127.0.0.1" : "c-owner.site",
             },
         }
     },
