@@ -63,8 +63,8 @@ export default defineNuxtConfig({
         },
         server: {
             https: {
-                key: fs.readFileSync(path.resolve(__dirname, 'server.key')),
-                cert: fs.readFileSync(path.resolve(__dirname, 'server.crt'))
+                key: fs.readFileSync(path.resolve(__dirname, '.cert/server.key')),
+                cert: fs.readFileSync(path.resolve(__dirname, '.cert/server.crt'))
             }
         }
     },
