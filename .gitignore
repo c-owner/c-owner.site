@@ -3,7 +3,7 @@
 .vscode/
 
 # key
-.cert/
+cert/
 
 
 # node.js ignore
