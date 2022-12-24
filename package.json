@@ -3,8 +3,9 @@
     "scripts": {
         "build": "nuxt build",
         "dev": "nuxt dev --port=3500",
-        "https-dev": "nuxt dev --https --ssl-cert .cert/localhost.pem --ssl-key .cert/localhost-key.pem",
+        "https-dev": "nuxt dev --port=80 --https --ssl-cert .cert/localhost.pem --ssl-key .cert/localhost-key.pem",
         "https-prod": "sudo yarn build && sudo pm2 stop all && sudo yarn preview",
+        "start": "NITRO_HOST=127.0.0.1 node .output/server/index.mjs",
         "generate": "nuxt generate",
         "preview": "PORT=443 pm2 start .output/server/index.mjs",
         "postinstall": "nuxt prepare",
@@ -52,6 +53,7 @@
     },
     "dependencies": {
         "@formkit/auto-animate": "^1.0.0-beta.5",
+        "@nuxtjs/axios": "^5.13.6",
         "@prisma/client": "^4.8.0",
         "@sidebase/nuxt-parse": "^0.3.0",
         "@vueuse/core": "^9.8.2",
