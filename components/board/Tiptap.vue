@@ -42,14 +42,14 @@
             </div>
             <div
                 class="w-full mb-4 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600">
-                <div class="px-4 py-2 bg-white rounded-b-lg dark:bg-gray-800">
+                <div class="bg-white rounded-b-lg dark:bg-gray-800">
                     <label for="editor" class="sr-only">Publish post</label>
                     <textarea
                         id="editor"
                         v-model="data.description"
                         rows="8"
-                        class="block w-full resize-none px-0 text-sm text-gray-800 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400"
-                        placeholder="Write an article..."
+                        class="block w-full p-4 focus:outline-none resize-none text-sm text-gray-800 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400"
+                        placeholder="질문은 구체적이고 친절하게 작성합니다."
                         required></textarea>
                 </div>
             </div>
