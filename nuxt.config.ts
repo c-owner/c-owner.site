@@ -8,7 +8,8 @@ export default defineNuxtConfig({
 
     css: [
         "@/assets/styles/tailwind.css",
-        "@/assets/styles/index.scss"
+        "@/assets/styles/index.scss",
+        "@/assets/styles/global.scss",
     ],
 
     plugins: [

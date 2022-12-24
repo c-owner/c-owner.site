@@ -128,7 +128,7 @@
                         로그인
                     </NuxtLink>
 
-                    <User
+                    <ElementsUser
                         @toggleSideDrawer="toggleSideDrawer"
                         v-if="user"
                         :user="user"
@@ -189,7 +189,7 @@
                 <div class="py-4 overflow-y-auto my-12">
                     <ul class="space-y-2">
                         <li>
-                            <User
+                            <ElementsUser
                                 v-if="user"
                                 :user="user"
                                 :isLoggedIn="isLoggedIn"
