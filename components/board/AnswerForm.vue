@@ -2,7 +2,7 @@
     import { useFetch, useState } from '#app';
     import { reactive } from 'vue';
 
-    const props = defineProps(['questionId', 'endpoint', 'answerData']);
+    const props = defineProps(['questionId', 'endpoint', 'answerData', 'showAnswerEditForm', 'selectIndex']);
 
     const emit = defineEmits<{
         (event: 'addAnswer', answer: BAnswer): void;
@@ -19,26 +19,32 @@
     });
 
     const showAnswerForm = useState('showAnswerForm' + questionId);
-    const showAnswerEditForm = useState('showAnswerEditForm' + data.id);
-
+    const showAnswerEditForm = useState('showAnswerEditForm' + props.selectIndex);
 
     async function postAnswer() {
+        if (data.text.length < 3) {
+            return;
+        }
         if (!data.id) {
             delete data.id;
         }
         const answer = await $fetch(`${props.endpoint}`, { method: 'post', body: { data } });
-        await cancelForm();
 
         // @ts-ignore
         emit('addAnswer', answer);
 
 
+        await cancelForm();
     }
     function cancelForm() {
+        if (data.id) {
+            showAnswerEditForm.value = false;
+        } else {
+            showAnswerForm.value = false;
+        }
+        showAnswerEditForm.value = false;
         data.text = '';
         data.questionId = questionId;
-        showAnswerForm.value = false;
-        showAnswerEditForm.value = false;
     }
 </script>
 
@@ -49,6 +55,7 @@
         >
         <textarea
             v-model="data.text"
+            required
             id="message"
             rows="4"
             class="block w-full shadow-sm sm:text-sm resize-none p-4 border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-900 dark:text-white dark:border-gray-600 dark:placeholder-gray-400"
@@ -60,7 +67,7 @@
                 작성
             </button>
             <button
-                @click="cancelForm"
+                @click="cancelForm()"
                 type="button"
                 class="mt-5 px-6 py-3.5 text-white bg-gradient-to-r from-red-500 via-red-600 to-red-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-indigo-300 dark:focus:ring-indigo-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">
                 취소

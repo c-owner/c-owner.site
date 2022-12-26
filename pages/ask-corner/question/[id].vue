@@ -21,9 +21,8 @@
         { key: route.fullPath }
     );
 
-    let selectIndex = null;
-
     const showAnswerForm = useState('showAnswerForm' + questionId, () => false);
+    let selectIndex = null;
     const showAnswerEditForm = useState('showAnswerEditForm' + selectIndex, () => false);
     const showEditForm = useState('showEditForm', () => false);
 
@@ -188,7 +187,8 @@
                             </div>
 
                             <div v-if="showAnswerEditForm && selectIndex === answer_index" :key="`answerForm-${answerData.id}`">
-                                <BoardAnswerForm :questionId="questionId" :answerData="answerData" :endpoint="answerPoint" @addAnswer="addAnswer" />
+                                <BoardAnswerForm :questionId="questionId" :answerData="answerData" :showAnswerEditForm="showAnswerEditForm" :selectIndex="selectIndex"
+                                                 :endpoint="answerPoint" @addAnswer="addAnswer" />
                             </div>
                             <p v-else
                                 class="mt-2 dark:text-gray-300 p-3 bg-gray-200 dark:bg-gray-700 rounded-lg" v-html="answer.text"></p>
