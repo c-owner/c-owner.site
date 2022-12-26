@@ -59,7 +59,7 @@ function filterComma(text: string) {
                         </span>
                         <div class="flex justify-end items-center text-gray-400 dark:text-gray-300 mb-5">
                             <span class="font-bold text-sm">
-                                {{ question.authName }} <span class="font-normal italic">{{ questionFromDate(question.createdAt) }}</span>
+                                {{ question.authName }} " <span class="font-normal italic">{{ questionFromDate(question.createdAt) }}</span> "
                             </span>
                             <span class="ml-3 text-sm font-medium dark:text-yellow-200" v-if="question.totalAnswer > 0">
                                 이 글에 달린 {{ question.totalAnswer }}개의 답변
