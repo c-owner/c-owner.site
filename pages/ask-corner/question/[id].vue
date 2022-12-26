@@ -111,8 +111,8 @@
 
         <div class="md:flex">
             <ElementsAskSidebar />
-            <div class="md:w-1/3 lg:w-1/4 z-1 flex justify-right relative"></div>
-            <div class="w-full md:w-2/3 lg:w-[50%] p-3">
+            <div class="sm:w-1/3 lg:w-1/4 z-1 flex justify-right relative"></div>
+            <div class="ml-auto mr-0 sm:w-2/3 md:w-2/3 lg:w-[50%] p-3">
                 <div
                     class="p-8 text-white bg-lime-600 dark:bg-black rounded shadow-md"
                     v-if="showDeleteQuestion">
