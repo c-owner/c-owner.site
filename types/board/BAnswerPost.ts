@@ -1,6 +1,7 @@
 type BAnswerPost = {
-    id: number
+    id?: number
     text: string
     authorId: number
     questionId: number
+    updatedAt: Date
 }
