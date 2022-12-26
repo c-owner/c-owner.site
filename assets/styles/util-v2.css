@@ -242,3 +242,7 @@
 .z-19 {
     z-index: 19;
 }
+
+.none {
+    display: none;
+}

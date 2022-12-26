@@ -3,11 +3,15 @@ import DialogBox from "~/components/elements/DialogBox.vue";
 import { useRoute, useRouter } from "#app";
 import { useLoggedIn } from "~/composables/useAuth";
 import { ref } from "vue";
+import { onClickOutside } from '@vueuse/core';
 
 const router = useRouter();
 const route = useRoute();
 const isLoggedIn = await useLoggedIn();
 const hideDialog = ref(true)
+
+const userActions = ref(null);
+const hideActions = ref(false);
 
 function goToAskForm() {
     if (isLoggedIn) {
@@ -20,7 +24,7 @@ function rehide() {
     hideDialog.value = true;
 }
 
-
+onClickOutside(userActions, () => (hideActions.value = true));
 </script>
 
 <template>
@@ -63,12 +67,14 @@ function rehide() {
                                class="w-full px-6 py-3.5 text-white bg-gradient-to-r from-pink-400 via-pink-500 to-pink-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-pink-300 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">
                         질문검색
                     </nuxt-link>
-                    <!-- <button type="button"
-                        class="w-full px-6 py-3.5 text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">
-                        Tags
-                    </button> -->
+                     <button type="button" @click="hideActions = !hideActions"
+                        class="sm:hidden block items-center flex justify-center w-full px-6 py-3.5 text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">
+                        <i class="ph-list-fill text-2xl pr-2" />
+                         더보기
+                    </button>
 
-                    <ul class="space-y-2 hidden sm:block">
+
+                    <ul class="space-y-2" :class="hideActions ? 'block' : 'hidden sm:block'">
                         <li>
                             <a href="#"
                                class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
@@ -148,6 +154,7 @@ function rehide() {
                             </a>
                         </li>
                     </ul>
+
                 </div>
             </div>
         </div>

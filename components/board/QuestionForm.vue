@@ -2,6 +2,10 @@
     import { useFetch, useRouter, useState } from '#app';
     import { ref } from 'vue';
 
+    definePageMeta({
+        middleware: 'auth'
+    })
+
     interface Props {
         data: BQuestionPost;
         showEditForm: boolean;

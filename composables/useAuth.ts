@@ -1,7 +1,7 @@
 import useErrorMapper from '~/composables/useErrorMapper'
 import { AuthSession } from '~/types/AuthSession'
-import { useCookie, useFetch, useRequestHeaders, useRouter, useState } from "#app";
-import { AuthUser } from "~/types/AuthUser";
+import { useCookie, useFetch, useRequestHeaders, useRouter, useState } from '#app'
+import { AuthUser } from '~/types/AuthUser'
 
 export const useAuthCookie = () => useCookie('auth_token')
 
@@ -10,11 +10,10 @@ export async function useUser(): Promise<AuthUser | null> {
     const user = useState<AuthUser | null>('user')
 
     if (authCookie && !user.value) {
-
         const cookieHeaders = useRequestHeaders(['cookie'])
 
         const { data } = await useFetch<AuthUser>(`/api/auth/getByAuthToken`, {
-            headers: cookieHeaders as HeadersInit,
+            headers: cookieHeaders as HeadersInit
         })
 
         user.value = data.value
@@ -39,7 +38,7 @@ export async function useLoggedIn() {
 
 export async function userLogout() {
     const logout = await $fetch('/api/auth/logout', {
-        method: 'POST',
+        method: 'POST'
     })
     if (logout) {
         useState('user').value = null
@@ -48,7 +47,7 @@ export async function userLogout() {
             result: logout
         }
     }
-    return useErrorMapper("로그아웃 실패")
+    return useErrorMapper('로그아웃 실패')
 }
 
 export async function registerWithEmail(
@@ -73,9 +72,15 @@ export async function registerWithEmail(
     }
 }
 
-export async function loginWithEmail(usernameOrEmail: string, password: string): Promise<FormValidation> {
+export async function loginWithEmail(
+    usernameOrEmail: string,
+    password: string
+): Promise<FormValidation> {
     try {
-        const result = await $fetch('/api/auth/login', { method: 'POST', body: { usernameOrEmail: usernameOrEmail, password: password } })
+        const result = await $fetch('/api/auth/login', {
+            method: 'POST',
+            body: { usernameOrEmail: usernameOrEmail, password: password }
+        })
 
         // @ts-ignore
         if (!result?.id) {
