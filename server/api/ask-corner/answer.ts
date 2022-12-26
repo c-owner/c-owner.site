@@ -2,9 +2,13 @@ import { eventHandler, getCookie, readBody } from "h3";
 import sendDefaultErrorResponse from "~/server/app/errors/responses/DefaultErrorResponse";
 import { getUserBySessionToken } from "~/server/app/services/sessionService";
 import { createAnswer } from "~/server/database/repositories/askCornerRepository";
+import dayjs from "dayjs";
 
 export default eventHandler(async (event) => {
     const body = await readBody(event)
+
+    body.data.createdAt = dayjs().utc().tz('Asia/Seoul').format('YYYY-MM-DD HH:mm:ss')
+    body.data.updatedAt = body.data.createdAt = dayjs().utc().tz('Asia/Seoul').format('YYYY-MM-DD HH:mm:ss')
 
     const data: BAnswerPost = body.data
     const authToken = getCookie(event, 'auth_token')  ?? null

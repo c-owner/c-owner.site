@@ -15,9 +15,12 @@
 
     const isEditable = ref(true); //todo: implement logic
 
+    const endpoint = props.endpoint || '';
+    const method = endpoint.indexOf('edit') ? 'PUT' : 'POST';
+
     async function postQuestion() {
         const { data: question } = await useFetch<BQuestion>(() => `${props.endpoint}`, {
-                method: 'post',
+                method: method,
                 body: { data },
                 pick: ['id']
             }

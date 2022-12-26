@@ -3,6 +3,7 @@
     import { useFetch, useRoute, useRouter, useState } from '#app';
     import { useLoggedIn, useUser } from '~/composables/useAuth';
     import Tiptap from "~/components/board/Tiptap.vue";
+    import dayjs from "dayjs";
 
     const router = useRouter();
     const route = useRoute();
@@ -39,6 +40,20 @@
         question.value?.answers.push(answer);
         showAnswerForm.value = false;
     }
+
+    function updatedCheck(created: Date, updated: Date) {
+        if (dayjs(created).isSame(dayjs(updated))) {
+            return {
+                type: false,
+                date: dayjs(created).format("YYYY-MM-DD HH:mm")
+            };
+        } else {
+            return {
+                type: true,
+                date: dayjs(updated).format("YYYY-MM-DD HH:mm")
+            };
+        }
+    }
 </script>
 
 <template>
@@ -69,23 +84,38 @@
                     <div class="max-w-xxl w-full p-4">
                         <div class="p-8 bg-white dark:bg-slate-700 rounded shadow-md">
                             <div class="flex justify-between dark:text-gray-300 text-sm">
-                                <span>
-                                    No. {{ question.id }}
-                                </span>
-                                <span class="dark:text-indigo-300">
+                                <span class="font-bold text-sm">
                                     {{ question.authName }}
+                                    &nbsp;{{ updatedCheck(question.createdAt, question.updatedAt).date }}
+                                    &nbsp;<span v-if="updatedCheck(question.createdAt, question.updatedAt).type">
+                                        (수정됨)
+                                    </span>
+                                </span>
+                                <span class="ml-3 text-sm dark:text-yellow-200" v-if="question.totalAnswer > 0">
+                                    답변: {{ question.totalAnswer }}
                                 </span>
                             </div>
 
                             <BoardTiptap v-if="!showEditForm" :data="question" label="" :editable="false" />
 
-                            <div class="mt-5" v-if="isMine && showEditForm == false">
-                                <button @click="showEditForm = true" class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-2 rounded">
-                                    수정
-                                </button>
-                                <button @click="deleteQuestion" class="bg-red-500 ml-3 hover:bg-indigo-700 text-white font-bold py-2 px-2 rounded">
-                                    삭제
-                                </button>
+                            <div class="flex justify-between">
+                                <div class="mt-5" v-if="isMine && showEditForm == false">
+                                    <button @click="showEditForm = true" class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-2 rounded">
+                                        수정
+                                    </button>
+                                    <button @click="deleteQuestion" class="bg-red-500 ml-3 hover:bg-indigo-700 text-white font-bold py-2 px-2 rounded">
+                                        삭제
+                                    </button>
+
+                                </div>
+                                <div class="flex justify-end mt-5">
+                                    <button v-if="!showAnswerForm && isLoggedIn" @click="showAnswerForm = !showAnswerForm"
+                                            class="text-white bg-gradient-to-r from-indigo-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 py-2 px-2
+                                            focus:outline-none focus:ring-indigo-200 dark:focus:ring-indigo-800 font-medium rounded-lg text-sm text-center"
+                                            type="button">
+                                        답변하기
+                                    </button>
+                                </div>
                             </div>
 
                             <BoardQuestionForm :endpoint="editEndPoint" :data="question" :showEditForm="showEditForm" v-if="showEditForm" />
@@ -108,13 +138,7 @@
                     </div>
                 </div>
 
-                <div class="flex justify-end">
-                    <button v-if="!showAnswerForm && isLoggedIn" @click="showAnswerForm = !showAnswerForm"
-                            class="text-white bg-gradient-to-r from-indigo-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-indigo-200 dark:focus:ring-indigo-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
-                            type="button">
-                        답변하기
-                    </button>
-                </div>
+
 
                 <div v-if="showAnswerForm">
                     <BoardAnswerForm :questionId="questionId" @addAnswer="addAnswer" />

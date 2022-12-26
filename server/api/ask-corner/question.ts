@@ -12,7 +12,12 @@ export default defineEventHandler(async (event) => {
 
     const questionId = tempId;
 
-    const question = await findQuestion(questionId)
+    const question = await findQuestion(questionId).then((res) => {
+        const totalAnswer = res.answers.length
+
+        return { ...res, totalAnswer }
+    })
+
 
     for (const answer of question.answers) {
         const user = await getUserById(answer.authorId)
