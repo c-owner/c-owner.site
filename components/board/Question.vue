@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { useFetch } from "#app";
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
+
 
 const searchInput = ref("");
 
@@ -10,6 +13,14 @@ function search() {
     if (searchInput.value.length >= 3) {
         refresh()
     }
+}
+
+function questionFromDate(date: Date) {
+    return dayjs(date).fromNow()
+}
+
+function filterComma(text: string) {
+    return text.replace(/,/g, "")
 }
 
 </script>
@@ -43,8 +54,20 @@ function search() {
                       class="flex flex-column justify-center hover:scale-110 transition duration-500">
                 <div class="max-w-xxl w-full p-4">
                     <div class="p-8 bg-white dark:bg-slate-700 rounded-lg shadow-md">
-                        <div class="flex justify-end dark:text-gray-300 mb-5">
-                            {{ question.authName }}
+                        <span class="font-bold text-sm">
+                            No.{{ filterComma(question.id.toString()) }}
+                        </span>
+                        <div class="flex justify-end items-center text-gray-400 dark:text-gray-300 mb-5">
+                            <span class="font-bold text-sm">
+                                {{ question.authName }} <span class="font-normal italic">{{ questionFromDate(question.createdAt) }}</span>
+                            </span>
+                            <span class="ml-3 text-sm font-medium dark:text-yellow-200" v-if="question.totalAnswer > 0">
+                                이 글에 달린 {{ question.totalAnswer }}개의 답변
+                            </span>
+                            <span class="ml-3 text-sm font-medium dark:text-gray-400" v-else>
+                                답변이 없습니다.
+                            </span>
+
                         </div>
 
                         <BoardTiptap :data="question" label="" :editable="false" />

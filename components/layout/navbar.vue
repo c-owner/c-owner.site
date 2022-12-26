@@ -61,7 +61,7 @@
 
 <template>
     <div class="navbar relative dark:bg-slate-600 box-shadow-3">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 border-b-2 border-gray-100 dark:border-gray-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 border-gray-100 dark:border-gray-700">
             <div class="flex justify-between">
                 <div class="flex justify-between min-w-full md:min-w-0">
                     <div class="md:hidden mt-4">

@@ -15,7 +15,9 @@ export default defineNuxtConfig({
         "@/assets/styles/global.scss"
     ],
 
-    plugins: [],
+    plugins: [
+        "@/plugins/dayjs.ts",
+    ],
 
     modules: [
         "@nuxtjs/tailwindcss",

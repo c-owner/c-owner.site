@@ -1,4 +1,6 @@
 type BAnswerPost = {
-    text: string;
-    questionId: number;
+    id: number
+    text: string
+    authorId: number
+    questionId: number
 }
