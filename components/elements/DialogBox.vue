@@ -6,7 +6,7 @@ defineProps({
 </script>
 
 <template>
-    <div class="relative z-10 dark:text-white" aria-labelledby="modal-title" role="dialog" aria-modal="false"
+    <div class="relative z-20 dark:text-white" aria-labelledby="modal-title" role="dialog" aria-modal="false"
          :hidden="hide">
 
         <div class="fixed inset-0 bg-gray-500 bg-opacity-75 dark:bg-opacity-90 transition-opacity"></div>

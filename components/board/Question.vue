@@ -26,7 +26,7 @@ function filterComma(text: string) {
 </script>
 
 <template>
-    <div class="w-full md:w-1/3">
+    <div class="w-full md:w-2/3 lg:w-[50%] p-3">
         <div>
             <div class="flex m-5">
                 <label for="search-dropdown"
