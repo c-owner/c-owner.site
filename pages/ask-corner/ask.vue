@@ -26,8 +26,8 @@ const endpoint = "/api/ask-corner/ask";
         <div class="md:flex">
 
             <ElementsAskSidebar />
-            <div class="md:w-1/3 z-1 flex justify-right relative"></div>
-            <div v-if="true" class="w-full md:w-1/3 h-screen">
+            <div class="md:w-1/3 lg:w-1/4 z-1 flex justify-right relative"></div>
+            <div class="w-full md:w-1/3 lg:w-[50%] p-3 h-screen">
                 <BoardQuestionForm :data="data" :endpoint="endpoint" />
             </div>
         </div>

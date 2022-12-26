@@ -15,7 +15,7 @@
         <div class="md:flex min-h-full">
             <ElementsAskSidebar />
 
-            <div class="md:w-1/3 z-1 flex justify-right relative"></div>
+            <div class="md:w-1/3 lg:w-1/4 z-1 flex justify-right relative"></div>
 
             <BoardQuestion />
         </div>
