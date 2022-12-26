@@ -68,12 +68,13 @@ export async function createAnswer(data: BAnswerPost, authorId: number) {
         data: {
             authorId: authorId,
             questionId: data.questionId,
-            text: data.text
+            text: data.text,
+            updatedAt: data.updatedAt
         }
     })
 }
 
-export async function defaultAnswer(id: number) {
+export async function deleteAnswer(id: number) {
     return await prisma.answer.delete({
         where: {
             id: id
@@ -81,13 +82,23 @@ export async function defaultAnswer(id: number) {
     })
 }
 
-export async function editAnswer(answer: BAnswerPost) {
+export async function editAnswer(data: BAnswerPost) {
     return await prisma.answer.update({
         where: {
-            id: answer.id
+            id: data.id
         },
         data: {
-            text: answer.text
+            text: data.text,
+            updatedAt: data.updatedAt
+        }
+    })
+}
+
+export async function findAnswer(id: number | undefined): Promise<BAnswer> {
+    // @ts-ignore
+    return await prisma.answer.findUnique({
+        where: {
+            id: id
         }
     })
 }

@@ -1,11 +1,11 @@
 import { createError, defineEventHandler, getCookie, readBody, sendError } from "h3";
-import { defaultAnswer, findQuestion } from "~/server/database/repositories/askCornerRepository";
+import { deleteAnswer, findAnswer } from "~/server/database/repositories/askCornerRepository";
 import sendDefaultErrorResponse from "~/server/app/errors/responses/DefaultErrorResponse";
 import { getUserBySessionToken } from "~/server/app/services/sessionService";
 
 export default defineEventHandler(async (event) => {
     const body = await readBody(event)
-    const question = await findQuestion(parseInt(body.questionId))
+    const answer = await findAnswer(parseInt(body.id))
     const authToken = getCookie(event, 'auth_token')
 
     // todo: replace everywere with middleware
@@ -19,11 +19,21 @@ export default defineEventHandler(async (event) => {
     }
 
     // @ts-ignore
-    const isMine = user.id == question.authorId
+    const isMine = user.id == answer.authorId
     if (!isMine) {
         sendError(event, createError({ statusCode: 403, statusMessage: '권한없음' }))
     }
 
-    return await defaultAnswer(question.id)
+    // @ts-ignore
+    const result = await deleteAnswer(answer.id)
+    if (!result) {
+        return sendError(event, createError({ statusCode: 500, statusMessage: '삭제 실패' }))
+    }
+
+    return {
+        statusCode: 200,
+        result: true,
+        message: 'success'
+    }
 
 })

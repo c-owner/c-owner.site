@@ -1,6 +1,6 @@
 <script setup lang="ts">
     import { ref } from 'vue';
-    import { useFetch, useRoute, useRouter, useState } from '#app';
+    import { refreshNuxtData, useFetch, useRoute, useRouter, useState } from "#app";
     import { useLoggedIn, useUser } from '~/composables/useAuth';
     import Tiptap from "~/components/board/Tiptap.vue";
     import dayjs from "dayjs";
@@ -9,18 +9,24 @@
     const route = useRoute();
     const questionId = route.params.id;
     const me = await useUser();
-    const showEditForm = ref(false);
-    const showDeleted = ref(false);
-    const showAnswerButton = ref(false);
+    const showDeleteQuestion = ref(false);
+    const showDeleteAnswer = ref(false);
+    const answerData = ref({} as BAnswerPost);
+
 
     const isLoggedIn = await useLoggedIn();
 
-    const { data: question } = await useFetch<BQuestion>(
+    const { data: question, refresh } = await useFetch<BQuestion>(
         `/api/ask-corner/question?id=${questionId}`,
         { key: route.fullPath }
     );
 
+    let selectIndex = null;
+
     const showAnswerForm = useState('showAnswerForm' + questionId, () => false);
+    const showAnswerEditForm = useState('showAnswerEditForm' + selectIndex, () => false);
+    const showEditForm = useState('showEditForm', () => false);
+
     const isMine = question?.value?.authorId == me?.id;
 
     async function deleteQuestion() {
@@ -29,16 +35,21 @@
             body: { questionId }
         });
 
-        showDeleted.value = true;
+        showDeleteQuestion.value = true;
         setTimeout(() => {
             router.push('/ask-corner/search');
         });
     }
 
     const editEndPoint = '/api/ask-corner/edit-question';
-    function addAnswer(answer: BAnswer) {
-        question.value?.answers.push(answer);
+
+    async function addAnswer(answer: BAnswer) {
+        await question.value?.answers.push(answer);
+        answerData.value = {} as BAnswerPost;
+
+        showAnswerEditForm.value = false;
         showAnswerForm.value = false;
+        await refresh();
     }
 
     function updatedCheck(created: Date, updated: Date) {
@@ -54,6 +65,37 @@
             };
         }
     }
+
+    let answerPoint = '/api/ask-corner/answer';
+    function actionEditAnswer(answer: BAnswerPost, index: number) {
+        if (!answer) {
+            answerData.value = {} as BAnswerPost;
+            answerPoint = '/api/ask-corner/answer';
+            showAnswerForm.value = true;
+            showAnswerEditForm.value = false;
+        } else {
+            answerData.value = answer;
+            answerPoint = '/api/ask-corner/edit-answer';
+            selectIndex = index;
+            showAnswerForm.value = false;
+            showAnswerEditForm.value = true;
+        }
+
+    }
+
+    async function deleteAnswer(id: number) {
+        const { data: deleted } = await useFetch('/api/ask-corner/delete-answer', {
+            method: 'DELETE',
+            body: { id }
+        });
+
+        showDeleteAnswer.value = true;
+        setTimeout(() => {
+            showDeleteAnswer.value = false
+        }, 1000)
+        await refresh();
+    }
+
 </script>
 
 <template>
@@ -74,7 +116,7 @@
             <div class="w-full md:w-1/3">
                 <div
                     class="p-8 text-white bg-lime-600 dark:bg-black rounded shadow-md"
-                    v-if="showDeleted">
+                    v-if="showDeleteQuestion">
                     질문 삭제
                 </div>
 
@@ -87,8 +129,8 @@
                                 <span class="font-bold text-sm">
                                     {{ question.authName }}
                                     &nbsp;{{ updatedCheck(question.createdAt, question.updatedAt).date }}
-                                    &nbsp;<span v-if="updatedCheck(question.createdAt, question.updatedAt).type">
-                                        (수정됨)
+                                    <span class="text-gray-400 font-normal" v-if="updatedCheck(question.createdAt, question.updatedAt).type">
+                                        <br/>(수정됨)
                                     </span>
                                 </span>
                                 <span class="ml-3 text-sm dark:text-yellow-200" v-if="question.totalAnswer > 0">
@@ -109,7 +151,7 @@
 
                                 </div>
                                 <div class="flex justify-end mt-5">
-                                    <button v-if="!showAnswerForm && isLoggedIn" @click="showAnswerForm = !showAnswerForm"
+                                    <button v-if="isLoggedIn && !isMine" @click="actionEditAnswer(null, null)"
                                             class="text-white bg-gradient-to-r from-indigo-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 py-2 px-2
                                             focus:outline-none focus:ring-indigo-200 dark:focus:ring-indigo-800 font-medium rounded-lg text-sm text-center"
                                             type="button">
@@ -118,31 +160,57 @@
                                 </div>
                             </div>
 
-                            <BoardQuestionForm :endpoint="editEndPoint" :data="question" :showEditForm="showEditForm" v-if="showEditForm" />
+                            <BoardQuestionForm :endpoint="editEndPoint" :data="question" :showEditForm="showEditForm" @refresh="refresh"
+                                               v-if="showEditForm" />
                         </div>
                     </div>
                 </div>
+                <div v-if="showAnswerForm" :key="`answerForm-${answerData.id}`">
+                    <BoardAnswerForm :questionId="questionId" :answerData="answerData" :endpoint="answerPoint" @addAnswer="addAnswer" />
+                </div>
 
-                <div v-for="answer in question?.answers" :key="answer.id"
+                <div
+                    class="p-8 text-white bg-lime-600 dark:bg-black rounded shadow-md mb-3 mt-3 transition duration-500"
+                    v-if="showDeleteAnswer">
+                    답변 삭제
+                </div>
+
+                <div v-for="(answer, answer_index) in question?.answers" :key="`answerList-${answer.id}`"
                      class="flex flex-column justify-center hover:scale-110 transition duration-500">
                     <div class="max-w-xxl w-full p-4">
 
                         <div class="p-8 bg-white dark:bg-slate-900 rounded shadow-md">
                             <div class="flex justify-end dark:text-gray-300 text-sm">
-                                <span class="dark:text-blue-200">
+                                <span class="font-bold text-sm dark:text-blue-200">
                                     {{ answer.authorName }}
+                                    &nbsp;{{ updatedCheck(question.createdAt, question.updatedAt).date }}
                                 </span>
                             </div>
-                            <p class="dark:text-gray-300" v-html="answer.text"></p>
+
+                            <div v-if="showAnswerEditForm && selectIndex === answer_index" :key="`answerForm-${answerData.id}`">
+                                <BoardAnswerForm :questionId="questionId" :answerData="answerData" :endpoint="answerPoint" @addAnswer="addAnswer" />
+                            </div>
+                            <p v-else
+                                class="mt-2 dark:text-gray-300 p-3 bg-gray-200 dark:bg-gray-700 rounded-lg" v-html="answer.text"></p>
+
+                            <div class="flex justify-end">
+                                <div class="mt-2" v-if="answer.authorId === me?.id">
+                                    <button @click="actionEditAnswer(answer, answer_index)" class="hover:text-indigo-700 text-indigo font-bold py-2 px-2 rounded">
+                                        수정
+                                    </button>
+                                    <button @click="deleteAnswer(answer.id)" class="ml-3 text-red-500 hover:text-indigo-700 font-bold py-2 px-2 rounded">
+                                        삭제
+                                    </button>
+
+                                </div>
+                            </div>
                         </div>
+
                     </div>
+
                 </div>
 
 
-
-                <div v-if="showAnswerForm">
-                    <BoardAnswerForm :questionId="questionId" @addAnswer="addAnswer" />
-                </div>
 
             </div>
         </div>
