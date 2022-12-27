@@ -3,8 +3,8 @@ module.exports = {
         {
             name: 'sample-app',
             // package.json에 정의된 npm run start를 실행하게 해서 PM2로 관리하게 한다.
-            script: 'yarn',
-            args: 'npm start',
+            script: 'npm',
+            args: 'run start',
             instances: 2,
             autorestart: true,
             watch: false,
