@@ -60,7 +60,7 @@ export default defineNuxtConfig({
 
     runtimeConfig: {
         public: {
-            DATABASE_URL: process.env.DATABASE_URL
+            DATABASE_URL: process.env.DATABASE_URL ? process.env.DATABASE_URL : "mysql://corner:Corner.123@ec2-13-209-96-46.ap-northeast-2.compute.amazonaws.com:3306/corner",
         },
         https: {
             key: process.env.NODE_ENV === 'development' ? fs.readFileSync(path.join(__dirname, "cert", "/localhost-key.pem"), "utf-8") : fs.readFileSync(path.join(__dirname, "cert", "/server.key"), "utf-8"),
