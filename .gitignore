@@ -1,9 +1,13 @@
+# key
+cert/
+
 # IDE
 .idea/
 .vscode/
 
-# key
-cert/
+# junk
+dumb.rdb
+server/database/migrations
 
 
 # node.js ignore
