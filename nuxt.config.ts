@@ -61,6 +61,10 @@ export default defineNuxtConfig({
     runtimeConfig: {
         public: {
             DATABASE_URL: process.env.DATABASE_URL
+        },
+        https: {
+            key: fs.readFileSync(path.join(__dirname, "cert", "server.key"), "utf-8"),
+            cert: fs.readFileSync(path.join(__dirname, "cert", "server_crt.pem"), "utf-8")
         }
     },
 
