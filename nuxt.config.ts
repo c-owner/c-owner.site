@@ -86,7 +86,7 @@ export default defineNuxtConfig({
         server: {
             proxy: {
                 "/api": {
-                    target: process.env.NODE_ENV === "development" ? "https://localhost:3000" : "https://c-owner.site",
+                    target: process.env.NODE_ENV === "development" ? "https://localhost:3000" : "http://c-owner.site",
                 }
             },
             hmr: {
