@@ -84,6 +84,10 @@ export default defineNuxtConfig({
                 "/api": {
                     target: process.env.NODE_ENV === "development" ? "https://localhost:3000" : "https://c-owner.site",
                 }
+            },
+            https: {
+                key: fs.readFileSync(path.join(__dirname, "cert", "server.key"), "utf-8"),
+                cert: fs.readFileSync(path.join(__dirname, "cert", "server.crt"), "utf-8")
             }
         }
     },
