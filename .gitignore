@@ -1,3 +1,4 @@
+
 # key
 cert/
 
@@ -8,6 +9,7 @@ cert/
 # junk
 dumb.rdb
 server/database/migrations
+yarn.lock
 
 
 # node.js ignore
