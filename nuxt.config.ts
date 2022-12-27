@@ -89,11 +89,6 @@ export default defineNuxtConfig({
                     target: process.env.NODE_ENV === "development" ? "https://localhost:3000" : "http://c-owner.site",
                 }
             },
-            hmr: {
-                protocol: "wss",
-                clientPort: 443,
-                path: "hmr/",
-            },
         }
     },
 
