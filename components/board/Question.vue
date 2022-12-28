@@ -3,6 +3,7 @@ import { ref } from "vue";
 import { useFetch } from "#app";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
+dayjs.extend(relativeTime);
 
 
 const searchInput = ref("");
@@ -48,7 +49,7 @@ function filterComma(text: string) {
             </div>
         </div>
 
-        <transition name="fade" v-if="!pending" v-for="question in questions" :key="question.id">
+        <transition name="fade" v-if="!pending && questions.length > 0" v-for="question in questions" :key="question.id">
             <NuxtLink v-if="question"
                       :to="`/ask-corner/question/${question.id}`"
                       class="flex flex-column justify-center hover:scale-110 transition duration-500">
@@ -76,6 +77,10 @@ function filterComma(text: string) {
                 </div>
             </NuxtLink>
 
+        </transition>
+
+        <transition name="fade" mode="in-out" v-else>
+            <ElementsEmpty text="등록된 질문이 없습니다." />
         </transition>
 
     </div>

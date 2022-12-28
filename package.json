@@ -2,9 +2,11 @@
     "private": true,
     "scripts": {
         "build": "nuxt build",
-        "dev": "nuxt dev --https --ssl-cert cert/localhost.pem --ssl-key cert/localhost-key.pem",
+        "dev": "nuxt dev",
         "https-dev": "nuxt dev --https --ssl-cert cert/localhost.pem --ssl-key cert/localhost-key.pem",
-        "https-prod": "yarn build && nuxt start --https --ssl-cert cert/localhost.pem --ssl-key cert/localhost-key.pem",
+        "https-prod": "nuxt start",
+        "deploy": "yarn build && yarn https-prod",
+        "test2": "PORT=443 nuxt start --https --ssl-cert cert/server_crt.pem --ssl-key cert/server.key",
         "generate": "nuxt generate",
         "preview": "PORT=443 pm2 start .output/server/index.mjs",
         "postinstall": "nuxt prepare",
@@ -14,8 +16,7 @@
         "ci:test": "yarn prisma migrate deploy && vitest",
         "prisma:generate": "dotenv -e .env -- npx prisma generate",
         "prisma:migrate": "dotenv -e .env -- npx prisma migrate deploy --name prod",
-        "prisma:dev_migrate": "prisma migrate dev",
-        "git:push-merge-corner": "git push && git checkout master && git merge dev/corner && git push && git checkout dev/corner"
+        "prisma:dev_migrate": "prisma migrate dev"
     },
     "devDependencies": {
         "@headlessui/vue": "^1.7.7",
@@ -62,6 +63,7 @@
         "eslint-plugin-prettier": "^4.2.1",
         "nodemailer": "^6.8.0",
         "prisma": "^4.8.0",
+        "redirect-ssl": "^3.0.0",
         "stripe": "^11.5.0",
         "uuid": "^9.0.0",
         "zod": "^3.20.2"
