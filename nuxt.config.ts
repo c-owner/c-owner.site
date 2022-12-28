@@ -1,6 +1,5 @@
 import * as fs from "fs";
 import path from "path";
-import { defineNuxtConfig } from "nuxt/config";
 
 export default defineNuxtConfig({
     // https://v3.nuxtjs.org/guide/directory-structure/nuxt.config/
@@ -63,7 +62,7 @@ export default defineNuxtConfig({
 
     runtimeConfig: {
         public: {
-            DATABASE_URL: process.env.DATABASE_URL ? process.env.DATABASE_URL : "mysql://admin:Rodtmxj.123@101.101.208.100:3306/corner",
+            DATABASE_URL: process.env.DATABASE_URL ? process.env.DATABASE_URL : "mysql://admin:Rodtmxj.123@127.0.0.1:3306/corner",
         },
         https: {
             key: process.env.NODE_ENV === 'development' ? fs.readFileSync(path.join(__dirname, "cert", "/localhost-key.pem"), "utf-8") : fs.readFileSync(path.join(__dirname, "cert", "/server.key"), "utf-8"),
