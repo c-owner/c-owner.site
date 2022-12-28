@@ -1,5 +1,5 @@
-import * as fs from "fs";
 import path from "path";
+const fs = require('fs');
 
 console.log("env",process.env.NODE_ENV === 'development');
 console.log(process.env.NODE_ENV);
