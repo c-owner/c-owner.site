@@ -3,7 +3,7 @@
     "scripts": {
         "build": "nuxt build",
         "dev": "nuxt dev",
-        "https-dev": "nuxt dev --https --ssl-cert cert/localhost.pem --ssl-key cert/localhost-key.pem",
+        "https-dev": "nuxt dev --https --ssl-cert cert/localhost.pem --ssl-key cert/localhost-key.pem --port=443",
         "https-prod": "nuxt start",
         "pm2-deploy": "pm2 start ecosystem.config.js --env productio",
         "generate": "nuxt generate",
