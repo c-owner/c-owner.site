@@ -1,3 +1,7 @@
+@import url("//cdn.jsdelivr.net/gh/wan2land/d2coding/d2coding-full.css");
+@import url("//fonts.googleapis.com/earlyaccess/notosanskr.css");
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+
 @media (min-width: 36.75rem) {
     :root {
         --global-fontFamilies-display: system-ui;
@@ -217,6 +221,13 @@
     --global-boxShadow-subtle: 0px 1px 4px 0px rgba(0,0,0,0.04),0px 0px 1px 0px rgba(0,0,0,0.04);
     --component-dialog-overlay-bg: rgba(38,45,64,0.6);
     --global-textInfo-hover: #107b8c;
+
+    /** global font family */
+    --font-family-noto-sans: 'Noto Sans';
+    --font-family-noto-sans-kr: 'Noto Sans KR';
+    --font-family-nanum-gothic: 'Nanum Gothic';
+    --font-family-d2coding: 'D2Coding';
+
 }
 
 .hTBox {

@@ -8,6 +8,7 @@
     const usernameOrEmail = ref('');
     const password = ref('');
     const rememberId = ref(false);
+    const showFindPw = ref(false);
 
     const errors: Ref<Map<string, { message: InputValidation }> | undefined> = ref(
         new Map<string, { message: InputValidation }>()
@@ -39,6 +40,9 @@
             localStorage.removeItem('corner_pw');
         }
         errors.value = response.errors;
+    }
+    function closeFindPw() {
+        showFindPw.value = false
     }
 </script>
 
@@ -116,7 +120,21 @@
                         로그인
                     </button>
                 </form>
+
+                <div class="mt-3 mb-3">
+                    <button type="button" @click="showFindPw = true;" class="text-sm font-medium text-indigo-600 hover:text-indigo-500">
+                        비밀번호를 잊으셨나요?
+                    </button>
+                </div>
+
+
             </div>
         </div>
+
+<!--        findPws Modal wrap -->
+        <transition name="fade">
+            <AuthFindPassword v-if="showFindPw" @closeFindPw="closeFindPw()" :showFindPw="showFindPw" />
+        </transition>
+
     </div>
 </template>

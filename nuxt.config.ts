@@ -20,7 +20,8 @@ export default defineNuxtConfig({
     css: [
         "@/assets/styles/tailwind.css",
         "@/assets/styles/index.scss",
-        "@/assets/styles/global.scss"
+        "@/assets/styles/global.scss",
+        "@/assets/styles/common.css",
     ],
 
     plugins: [
