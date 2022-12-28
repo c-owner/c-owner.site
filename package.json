@@ -1,10 +1,13 @@
 {
     "private": true,
+    "nuxt": {
+        "port": 80
+    },
     "scripts": {
         "build": "nuxt build",
         "dev": "nuxt dev",
         "https-dev": "nuxt dev --https --ssl-cert cert/localhost.pem --ssl-key cert/localhost-key.pem",
-        "https-prod": "nuxt start --https --ssl-cert cert/server.pem --ssl-key cert/server.key --port=443",
+        "https-prod": "nuxt start",
         "pm2-deploy": "pm2 start ecosystem.config.js --env productio",
         "generate": "nuxt generate",
         "preview": "pm2 start .output/server/index.mjs",

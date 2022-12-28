@@ -1,6 +1,8 @@
 import * as fs from "fs";
 import path from "path";
 
+console.log(process.env.DATABASE_URL ? process.env.DATABASE_URL : "mysql://admin:Rodtmxj.123@localhost:3306/corner");
+
 export default defineNuxtConfig({
     // https://v3.nuxtjs.org/guide/directory-structure/nuxt.config/
     // As of RC12 Nuxt 3 supports Hybrid rendering mode
@@ -8,6 +10,8 @@ export default defineNuxtConfig({
     // routeRules: {
     //     "/pages/**": { ssr: true }
     // },
+    hooks: {
+    },
 
     css: [
         "@/assets/styles/tailwind.css",
@@ -60,7 +64,7 @@ export default defineNuxtConfig({
 
     runtimeConfig: {
         public: {
-            DATABASE_URL: process.env.DATABASE_URL ? process.env.DATABASE_URL : "mysql://corner:Corner.123@ec2-13-209-96-46.ap-northeast-2.compute.amazonaws.com:3306/corner",
+            DATABASE_URL: process.env.DATABASE_URL ? process.env.DATABASE_URL : "mysql://admin:Rodtmxj.123@localhost:3306/corner",
         },
         https: {
             key: process.env.NODE_ENV === 'development' ? fs.readFileSync(path.join(__dirname, "cert", "/localhost-key.pem"), "utf-8") : fs.readFileSync(path.join(__dirname, "cert", "/server.key"), "utf-8"),
