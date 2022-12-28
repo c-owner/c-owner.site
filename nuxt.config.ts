@@ -7,8 +7,8 @@ console.log("envPath : ", envPath);
 console.log("env", process.env.NODE_ENV === "development");
 console.log(process.env.NODE_ENV);
 
-const ssl_key_path = process.env.SSL_KEY_PATH ? process.env.SSL_KEY_PATH : "cert/server.key";
-const ssl_cert_path = process.env.SSL_CERT_PATH ? process.env.SSL_CERT_PATH : "cert/server_crt.pem";
+const ssl_key_path = process.env.SSL_KEY_PATH;
+const ssl_cert_path = process.env.SSL_CERT_PATH;
 
 export default defineNuxtConfig({
     // https://v3.nuxtjs.org/guide/directory-structure/nuxt.config/
