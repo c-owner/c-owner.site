@@ -1,6 +1,8 @@
 import * as fs from "fs";
 import path from "path";
 
+console.log(process.env.NODE_ENV === 'development');
+console.log(process.env.NODE_ENV);
 export default defineNuxtConfig({
     // https://v3.nuxtjs.org/guide/directory-structure/nuxt.config/
     // As of RC12 Nuxt 3 supports Hybrid rendering mode
