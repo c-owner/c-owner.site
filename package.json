@@ -5,7 +5,7 @@
         "dev": "nuxt dev",
         "https-dev": "nuxt dev --https --ssl-cert cert/localhost.pem --ssl-key cert/localhost-key.pem",
         "https-prod": "nuxt start --https --ssl-cert cert/server_crt.pem --ssl-key cert/server.key",
-        "deploy": "rm -rf node_modules/ .nuxt .output yarn.lock && yarn && yarn generate && yarn start",
+        "deploy": "rm -rf node_modules/ .nuxt .output yarn.lock && yarn && yarn build && yarn start",
         "test2": "PORT=443 nuxt start --https --ssl-cert cert/server_crt.pem --ssl-key cert/server.key",
         "generate": "nuxt generate",
         "preview": "PORT=443 pm2 start .output/server/index.mjs",
