@@ -1,8 +1,5 @@
 {
     "private": true,
-    "nuxt": {
-        "port": 80
-    },
     "scripts": {
         "build": "nuxt build",
         "dev": "nuxt dev",
