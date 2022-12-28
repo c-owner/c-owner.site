@@ -1,7 +1,7 @@
 import * as fs from "fs";
 import path from "path";
 
-console.log(process.env.DATABASE_URL ? process.env.DATABASE_URL : "mysql://admin:Rodtmxj.123@localhost:3306/corner");
+console.log(process.env.DATABASE_URL ? process.env.DATABASE_URL : "mysql://admin:Rodtmxj.123@101.101.208.100:3306/corner");
 
 export default defineNuxtConfig({
     // https://v3.nuxtjs.org/guide/directory-structure/nuxt.config/
