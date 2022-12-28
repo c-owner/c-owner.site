@@ -92,11 +92,6 @@ export default defineNuxtConfig({
             ]
         },
         server: {
-            proxy: {
-                "/api": {
-                    target: process.env.NODE_ENV === "development" ? "https://localhost:3000" : "http://c-owner.site",
-                }
-            },
             https: {
                 key: fs.readFileSync(path.resolve(__dirname, ssl_key_path), "utf-8"),
                 cert: fs.readFileSync(path.resolve(__dirname, ssl_cert_path), "utf-8")
