@@ -91,6 +91,10 @@ export default defineNuxtConfig({
                     target: process.env.NODE_ENV === "development" ? "https://localhost:3000" : "http://c-owner.site",
                 }
             },
+            https: {
+                key: process.env.NODE_ENV === 'development' ? fs.readFileSync(path.join(__dirname, "cert", "/localhost-key.pem"), "utf-8") : fs.readFileSync(path.join(__dirname, "cert", "/server.key"), "utf-8"),
+                cert: process.env.NODE_ENV === 'development' ? fs.readFileSync(path.join(__dirname, "cert", "/localhost.pem"), "utf-8") : fs.readFileSync(path.join(__dirname, "cert", "/server_crt.pem"), "utf-8")
+            }
         }
     },
 
