@@ -1,5 +1,6 @@
 import * as fs from "fs";
 import path from "path";
+import { defineNuxtConfig } from "nuxt/config";
 
 export default defineNuxtConfig({
     // https://v3.nuxtjs.org/guide/directory-structure/nuxt.config/
