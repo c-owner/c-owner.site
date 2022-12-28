@@ -26,16 +26,4 @@ module.exports = {
       error: './logs/consoleError.log'
 }],
 
-  deploy : {
-    production : {
-      user : 'c-owner',
-      host : '127.0.0.1',
-      ref  : 'origin/master',
-      repo : 'https://github.com/c-owner/c-owner.site.git',
-      path : '.output/public',
-      'pre-deploy-local': '',
-      'post-deploy' : 'rm -rf yarn.lock node_modules .nuxt .output && yarn && pm2 reload ecosystem.config.js --env production',
-      'pre-setup': ''
-    }
-  }
 };
