@@ -1,7 +1,7 @@
 import * as fs from "fs";
 import path from "path";
 
-console.log(process.env.NODE_ENV === 'development');
+console.log("env",process.env.NODE_ENV === 'development');
 console.log(process.env.NODE_ENV);
 
 const ssl_key_path = process.env.SSL_KEY_PATH ? process.env.SSL_KEY_PATH : "cert/server.key";
