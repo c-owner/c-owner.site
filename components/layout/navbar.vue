@@ -135,7 +135,7 @@
                         v-if="user"
                         :user="user"
                         :isLoggedIn="isLoggedIn"
-                        class="hidden md:block ml-5" />
+                        class="hidden md:block ml-5 relative" />
 
                     <NuxtLink
                         v-if="!user"
