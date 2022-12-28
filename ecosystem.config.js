@@ -7,8 +7,7 @@ module.exports = {
       name: 'Nuxt3 FullStack Corner',
       exec_mode: 'cluster',
       instances: 'max',
-      script: 'yarn',
-      args: 'preview',
+      script: '.output/server/index.mjs',
       autorestart: true,
       watch: false,
       env: {
@@ -33,7 +32,7 @@ module.exports = {
       host : '127.0.0.1',
       ref  : 'origin/master',
       repo : 'https://github.com/c-owner/c-owner.site.git',
-      path : '.output',
+      path : '.output/public',
       'pre-deploy-local': '',
       'post-deploy' : 'rm -rf yarn.lock node_modules .nuxt .output && yarn && pm2 reload ecosystem.config.js --env production',
       'pre-setup': ''
