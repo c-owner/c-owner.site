@@ -3,9 +3,8 @@
     "scripts": {
         "build": "nuxt build",
         "dev": "nuxt dev",
-        "https-dev": "nuxt dev --https --ssl-cert cert/localhost.pem --ssl-key cert/localhost-key.pem --port=443",
-        "https-prod": "nuxt start",
-        "pm2-deploy": "pm2 start ecosystem.config.js --env productio",
+        "https-dev": "nuxt dev --https --port 3000",
+        "https-prod": "nuxt start --https --port 80",
         "generate": "nuxt generate",
         "preview": "PORT=443 pm2 start .output/server/index.mjs",
         "postinstall": "nuxt prepare",
