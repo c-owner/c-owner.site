@@ -60,7 +60,7 @@ onClickOutside(userActions, () => (hideActions.value = true));
             <div class="w-100 sm:block" aria-label="Sidebar">
                 <div class="overflow-y-auto py-4 px-3 bg-gray-50 rounded dark:bg-gray-900">
                     <span v-if="route.path !== '/ask-corner/ask'" @click="goToAskForm" type="button"
-                          class="cursor-pointer w-full px-6 py-3.5 text-white bg-gradient-to-r from-indigo-500 via-indigo-600 to-indigo-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-indigo-300 dark:focus:ring-indigo-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">
+                          class="cursor-pointer w-full px-6 py-3.5 text-white bg-gradient-to-r from-indigo-500 via-indigo-600 to-indigo-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-indigo-300 dark:focus:ring-indigo-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center md:mr-2 mb-2">
                         질문하기
                     </span>
                     <nuxt-link v-if="route.path !== '/ask-corner/search'" to="/ask-corner/search" type="button"
