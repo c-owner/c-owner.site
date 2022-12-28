@@ -52,14 +52,16 @@
     }
 
     function updatedCheck(created: Date, updated: Date) {
-        if (dayjs(created).isSame(dayjs(updated))) {
+        const diff = dayjs(updated).diff(dayjs(created), 'seconds');
+
+        if (diff < 1) {
             return {
-                type: true,
+                type: false,
                 date: dayjs(created).format("YYYY-MM-DD HH:mm")
             };
         } else {
             return {
-                type: false,
+                type: true,
                 date: dayjs(updated).format("YYYY-MM-DD HH:mm")
             };
         }
