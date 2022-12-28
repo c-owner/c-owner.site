@@ -21,6 +21,29 @@
     opacity: 1;     /* 1초 뒤에 opacity 0을 opacity 1로 바꿔줌 */
 }
 
+.fade {
+    animation: fade 1s;
+}
+.fade-out {
+    animation: fade-out 1s;
+}
+@keyframes fade {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fade-out {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
 /* Slide transition using Animation property of CSS */
 .slide-enter{
     /* keyframe에 이미 초기 상태를 정의해놔서 여기에 정의 안해도 됨 */
