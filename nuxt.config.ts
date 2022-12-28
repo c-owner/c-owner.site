@@ -68,7 +68,7 @@ export default defineNuxtConfig({
 
     runtimeConfig: {
         public: {
-            DATABASE_URL: process.env.DATABASE_URL ? process.env.DATABASE_URL : "mysql://admin:Rodtmxj.123@127.0.0.1:3306/corner",
+            DATABASE_URL: process.env.DATABASE_URL ? process.env.DATABASE_URL : "mysql://admin:Rodtmxj.123@develop-corner.com:3306/corner",
         },
         https: {
             key: fs.readFileSync(path.resolve(__dirname, ssl_key_path), "utf-8"),
