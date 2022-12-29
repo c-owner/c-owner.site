@@ -25,23 +25,18 @@
         emit('closeFindPw');
     }
 
-    async function findEmail() {
-        response = await findWithEmail(email.value);
-        // return true;
-        errors.value = response.errors;
-    }
-
     async function findAction() {
-        await findEmail();
+        response = await findWithEmail(email.value);
+        errors.value = response.errors;
 
-        if (errors) {
+        if (response?.hasErrors && errors) {
             return;
+        } else {
+            await useFetch('/api/auth/send-verify', {
+                method: 'POST',
+                body: { email: email.value }
+            });
         }
-        return;
-        await useFetch('/api/auth/find-password', {
-            method: 'POST',
-            body: { email: email.value, verifyNumber: verifyNumber.value }
-        });
     }
 </script>
 
@@ -52,16 +47,6 @@
                 ref="findPwModal"
                 style="width: fit-content; height: fit-content"
                 class="fixed z-20 pb-20 m-auto inset-x-0 inset-y-0 p-4 dark:bg-gray-800 bg-white rounded-sm overflow-y-scroll">
-                <div
-                    class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mt-3"
-                    role="alert"
-                    v-if="response?.hasErrors && errors">
-                    <ul class="block sm:inline">
-                        <li v-for="[key, value] in errors">
-                            {{ value.message }}
-                        </li>
-                    </ul>
-                </div>
 
                 <!--                top area -->
                 <div class="flex items-center text-black">
@@ -109,6 +94,18 @@
                         찾기
                     </button>
                 </form>
+
+                <div
+                    class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mt-3"
+                    role="alert"
+                    v-if="response?.hasErrors && errors">
+                    <ul class="block sm:inline">
+                        <li v-for="[key, value] in errors">
+                            {{ value.message }}
+                        </li>
+                    </ul>
+                </div>
+
             </div>
         </div>
     </div>

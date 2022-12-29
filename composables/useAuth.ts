@@ -95,24 +95,18 @@ export async function loginWithEmail(
     }
 }
 
-export async function findWithEmail(
-    usernameOrEmail: string
-): Promise<FormValidation> {
+export async function findWithEmail(email: string): Promise<FormValidation> {
     try {
         const result = await $fetch('/api/auth/find-email', {
             method: 'POST',
-            body: { usernameOrEmail: usernameOrEmail }
+            body: { email: email }
         })
-
-        if (!result?.id) {
-            throw Error('something went wrong')
+        if (!result) {
+            return { hasErrors: true}
         }
-
-        console.log(result);
 
         return { hasErrors: false }
     } catch (error: any) {
         return useErrorMapper(error.data.data)
     }
 }
-

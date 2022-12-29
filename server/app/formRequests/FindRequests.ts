@@ -9,12 +9,6 @@ const bodySchema = z.object({
         })
         .min(1, { message: '이메일은 필수입니다.' })
         .email({ message: '유효한 이메일 주소를 입력해주세요.' }),
-
-    verifyNumber: z
-        .string({
-            required_error: 'verifyNumber required'
-        })
-        .min(1, { message: '인증번호는 필수입니다.' })
 })
 
 export default async function findRequests(event: H3Event) {
