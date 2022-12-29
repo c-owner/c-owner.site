@@ -3,14 +3,11 @@ const fs = require('fs');
 
 const envPath = `config/.env.${process.env.NODE_ENV || 'development'}`
 require('dotenv').config({ path: envPath })
-console.log("envPath : ", envPath);
 console.log("env", process.env.NODE_ENV === "development");
 console.log(process.env.NODE_ENV);
 
 const ssl_key_path = process.env.SSL_KEY_PATH;
 const ssl_cert_path = process.env.SSL_CERT_PATH;
-console.log(ssl_cert_path);
-console.log(ssl_key_path);
 
 export default defineNuxtConfig({
     // https://v3.nuxtjs.org/guide/directory-structure/nuxt.config/
