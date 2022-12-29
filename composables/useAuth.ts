@@ -94,3 +94,25 @@ export async function loginWithEmail(
         return useErrorMapper(error.data.data)
     }
 }
+
+export async function findWithEmail(
+    usernameOrEmail: string
+): Promise<FormValidation> {
+    try {
+        const result = await $fetch('/api/auth/find-email', {
+            method: 'POST',
+            body: { usernameOrEmail: usernameOrEmail }
+        })
+
+        if (!result?.id) {
+            throw Error('something went wrong')
+        }
+
+        console.log(result);
+
+        return { hasErrors: false }
+    } catch (error: any) {
+        return useErrorMapper(error.data.data)
+    }
+}
+

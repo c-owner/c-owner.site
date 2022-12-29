@@ -1,10 +1,10 @@
-import { RegistrationRequest } from "~/types/AuthRegistration";
-import { validate } from "~/server/app/services/validators/validator";
-import { AuthUser } from "~/types/AuthUser";
-import { User } from "@prisma/client";
-import { getCookie, H3Event } from "h3";
-import { isString } from "@vueuse/core";
-import { getUserBySessionToken } from "~/server/app/services/sessionService";
+import { RegistrationRequest } from '~/types/AuthRegistration'
+import { validate } from '~/server/app/services/validators/validator'
+import { AuthUser } from '~/types/AuthUser'
+import { User } from '@prisma/client'
+import { getCookie, H3Event } from 'h3'
+import { isString } from '@vueuse/core'
+import { getUserBySessionToken } from '~/server/app/services/sessionService'
 
 export async function validateUser(data: RegistrationRequest) {
     const errors = await validate(data)
@@ -20,9 +20,9 @@ export function sanitizeUserForFrontend(user: AuthUser | undefined): User | unde
         return user
     }
 
-    delete user.password;
-    delete user.loginType;
-    delete user.stripeCustomerId;
+    delete user.password
+    delete user.loginType
+    delete user.stripeCustomerId
 
     return user as User
 }
@@ -36,7 +36,8 @@ export async function authCheck(event: H3Event): Promise<boolean> {
     }
 
     const user = await getUserBySessionToken(authToken)
-  if (user?.id) {
+    // @ts-ignore
+    if (user?.id) {
         return true
     }
 

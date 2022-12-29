@@ -115,11 +115,6 @@ export default defineNuxtConfig({
             ]
         },
         server: {
-            hmr: {
-                protocol: "wss",
-                clientPort: 443,
-                path: "hmr/",
-            },
             https: {
                 // @ts-ignore
                 key: fs.readFileSync(path.join(__dirname, ssl_key_path), "utf-8"),
