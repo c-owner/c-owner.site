@@ -3,7 +3,7 @@
 
     const nuxtApp = useNuxtApp();
 
-    nuxtApp.hook('page:finish', () => { // 페이지 렌더링이 끝나면 하면 위로 스크롤
+    nuxtApp.hook('page:finish', () => { // 페이지 렌더링이 끝나면 화면 위로 스크롤
         window.scrollTo(0, 0);
     });
 
