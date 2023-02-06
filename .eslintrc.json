@@ -1,4 +1,14 @@
 {
-    "ignorePatterns": ["node_modules/*", "dist/*", "!.prettierrc"],
-    "extends": ["plugins:react/recommended", "plugin:prettier/recommended"]
+    "root": true,
+    "env": {
+        "browser": true,
+        "es6": true,
+        "node": true
+    },
+    "ignorePatterns": ["node_modules/*", "dist/*", "!.prettierrc.js", "!.*md"],
+    "extends": ["plugin:@typescript-eslint/recommended", "plugin:react/recommended", "plugin:prettier/recommended"],
+    "plugins": ["prettier"],
+    "rules": {
+        "prettier/prettier": ["error", {}]
+    }
 }

@@ -102,7 +102,7 @@ export async function findWithEmail(email: string): Promise<FormValidation> {
             body: { email: email }
         })
         if (!result) {
-            return { hasErrors: true}
+            return { hasErrors: true }
         }
 
         return { hasErrors: false }
